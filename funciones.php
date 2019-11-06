@@ -2,7 +2,7 @@
 function boton()
 {
     ?>
-    <h1 style="color:black;float:center">SECCIONES</h1>
+    <h1 style="color:black;float:center">ADMINISTRACION</h1>
 
     <body Style="background-color:springgreen;">
         <form method="POST" action="alta_usuario.php" style="display:inline; color:mediumspringgreen">
