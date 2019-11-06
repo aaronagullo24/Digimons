@@ -24,8 +24,7 @@ function boton()
             <input type="submit" value="ver digimon" name="ver digimon" id="ver digimon">
         </form>
 
-        
-    </body>
-    <?php
-}
 
+    </body>
+<?php
+}
