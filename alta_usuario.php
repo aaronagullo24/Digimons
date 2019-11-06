@@ -6,32 +6,30 @@ $contraseña = "";
 if (isset($_POST['nombre'])) {
     $nombre = $_POST['nombre'];
     $contraseña = $_POST['contraseña'];
-    Echo "entra;";
+    echo "entra;";
     $correcto = false;
+    $encontrado = "";
+    $pass = "";
 
-     $fichero = fopen("usuarios.txt", "r");
+    $fichero = fopen("usuarios.txt", "r");
     while (($linea = fgets($fichero)) && !$encontrado) {
         $linea = trim($linea);
         $posicion_espacio = strpos($linea, " ");
-        $nombre = substrt($linea, 0, $posicion_espacio);
+        $user = substr($linea, 0, $posicion_espacio);
 
-        $longitud_pass = strlen($linea) - ($posicion_espacio + 1);
-
-        $contraseña = trim($contraseña);
-        $contraseña = substr($linea, $posicion_espacio + 1, $longitud_pass);
-
-        if ($nombre == $nombre && $contraseña == $contraseña) $encontrado = true;
+        if ($nombre == $user) $encontrado = true;
     }
     fclose($fichero);
 
-     if ($encontrado && !$error) {
+    if ($encontrado) {
         echo "El usuario ya existe";
     } else {
-    $file = fopen("usuarios.txt", "a");
-    fwrite($file, $nombre. PHP_EOL);
-    fwrite($file, $contraseña . PHP_EOL);
-    fclose($file);
-}
+        $file = fopen("usuarios.txt", "a+");
+        fwrite($file, $nombre . " ");
+        fwrite($file, $contraseña . "\n");
+
+        fclose($file);
+    }
 }
 
 ?>
