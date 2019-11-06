@@ -27,6 +27,7 @@ if (isset($_POST['nombre'])) {
         $file = fopen("usuarios.txt", "a+");
         fwrite($file, $nombre . " ");
         fwrite($file, $contraseña . "\n");
+        mkdir($nombre, 0777);
 
         fclose($file);
     }
