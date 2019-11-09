@@ -1,9 +1,20 @@
-<?php
-$nombre = "";
+<html>
 
-if (isset($_GET['nombre'])) {
-    $nombre = $_GET['nombre'];
+<head>
+    <title>Usuario</title>
+</head>
 
-    
-}
-?>
+<body>
+    <?php
+    include "funciones.php";
+    $nombre = "";
+
+    if (isset($_GET['nombre'])) {
+        $nombre = $_GET['nombre'];
+
+        botonUsuario();
+    }
+    ?>
+</body>
+
+</html>

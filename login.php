@@ -21,8 +21,6 @@ if (isset($_GET['nombre'])) {
         echo "USUARIO NO VALIDO";
     }
 }
-
-
 ?>
 
 <form method='GET' action="<?= $_SERVER['PHP_SELF'] ?>">
