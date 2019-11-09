@@ -15,12 +15,12 @@ function boton()
             <input type="submit" value="alta digimon" name="alta digimon" id="alta digimon">
         </form>
         <form method="POST" action="definir_evolucion.php" style="display:inline;color:mediumspringgreen">
-            <input name="cadena" type="hidden" value="<?php echo $cadena_datos; ?>">
+            <input name="cadena" type="hidden" >
             <input type="submit" value="definir evolucion" name="definir evolucion" id="definir evolucion">
         </form>
 
         <form method="POST" action="ver_digimon.php" style="display:inline;color:mediumspringgreen">
-            <input name="cadena" type="hidden" value="<?php echo $cadena_datos; ?>">
+            <input name="cadena" type="hidden" >
             <input type="submit" value="ver digimon" name="ver digimon" id="ver digimon">
         </form>
 

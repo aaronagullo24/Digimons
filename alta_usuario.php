@@ -6,12 +6,11 @@ $contraseña = "";
 if (isset($_POST['nombre'])) {
     $nombre = $_POST['nombre'];
     $contraseña = $_POST['contraseña'];
-    echo "entra;";
-    $correcto = false;
-    $encontrado = "";
-    $pass = "";
 
-    $fichero = fopen("usuarios.txt", "r");
+    $encontrado = "";
+
+
+    $fichero = fopen("usuarios.txt", "a+");
     while (($linea = fgets($fichero)) && !$encontrado) {
         $linea = trim($linea);
         $posicion_espacio = strpos($linea, " ");
@@ -27,7 +26,7 @@ if (isset($_POST['nombre'])) {
         $file = fopen("usuarios.txt", "a+");
         fwrite($file, $nombre . " ");
         fwrite($file, $contraseña . "\n");
-        mkdir($nombre, 0777);
+        mkdir("Usuarios/" . $nombre, 0777);
 
         fclose($file);
     }
