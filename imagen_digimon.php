@@ -3,28 +3,29 @@
 $nombre = "";
 $nombre = $_POST['nombre'];
 if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
-    
+
     $nombre = "";
     $nombre = $_POST['nombre'];
 
     if ($_FILES['normal']['name'] != "") { // El campo foto contiene una imagen...
-        // Primero, hay que validar que se trata de un JPG/GIF/PNG
-        $extension = end(explode(".", $_FILES["normal"]["name"]));
+
         $fichero = $_FILES["normal"]["type"];
         $allowedExts = array("jpg", "jpeg", "gif", "png", "JPG", "GIF", "PNG");
+        $extension = end(explode(".", $_FILES["normal"]["name"]));
+        echo $extension;
         if ((($_FILES["normal"]["type"] == "image/png")
-            || ($_FILES["normal"]["type"] == "image/jpg")
-            || ($_FILES["normal"]["type"] == "image/gif")
-            || ($_FILES["normal"]["type"] == "image/pjpeg"))
+                || ($_FILES["normal"]["type"] == "image/jpg")
+                || ($_FILES["normal"]["type"] == "image/gif")
+                || ($_FILES["normal"]["type"] == "image/jpeg"))
             && in_array($extension, $allowedExts)) {
+
             $directorio = "digimones/" . $nombre . "/"; // directorio 
 
             // almacenar imagen en el servidor
-            move_uploaded_file($_FILES['normal']['tmp_name'], $directorio . "n.".$extension);
+            move_uploaded_file($_FILES['normal']['tmp_name'], $directorio . "n." . $extension);
             echo "la foto de " . $nombre . " a sido añadida con exito";
         } else { // El archivo no es JPG/GIF/PNG
-
-            echo "eror";
+            echo "error ererer";
             exit;
         }
     } else { // El campo foto NO contiene una imagen
@@ -34,19 +35,21 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
     }
 
     if ($_FILES['victoria']['name'] != "") { // El campo foto contiene una imagen...
-        // Primero, hay que validar que se trata de un JPG/GIF/PNG
-        $extension = end(explode(".", $_FILES["victoria"]["name"]));
+
         $fichero = $_FILES["victoria"]["type"];
-         $allowedExts = array("jpg", "jpeg", "gif", "png", "JPG", "GIF", "PNG");
+        $allowedExts = array("jpg", "jpeg", "gif", "png", "JPG", "GIF", "PNG");
+        $extension = end(explode(".", $_FILES["victoria"]["name"]));
+        echo $extension;
         if ((($_FILES["victoria"]["type"] == "image/png")
-            || ($_FILES["victoria"]["type"] == "image/jpg")
-            || ($_FILES["victoria"]["type"] == "image/gif")
-            || ($_FILES["victoria"]["type"] == "image/pjpeg"))
-            && in_array($extension, $allowedExts)) {
-                $directorio = "digimones/" . $nombre . "/"; // directorio 
+                || ($_FILES["victoria"]["type"] == "image/jpg")
+                || ($_FILES["victoria"]["type"] == "image/gif")
+                || ($_FILES["victoria"]["type"] == "image/jpeg"))
+            && in_array($extension, $allowedExts)
+        ) {
+            $directorio = "digimones/" . $nombre . "/"; // directorio 
 
             // almacenar imagen en el servidor
-            move_uploaded_file($_FILES['victoria']['tmp_name'], $directorio . "v.".$extension);
+            move_uploaded_file($_FILES['victoria']['tmp_name'], $directorio . "v." . $extension);
             echo "la foto de " . $nombre . " a sido añadida con exito";
         } else { // El archivo no es JPG/GIF/PNG
 
@@ -54,24 +57,28 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
             exit;
         }
     } else { // El campo foto NO contiene una imagen
-        header("Location: ver_digimon.php?");
+        
         echo "erroe";
         exit;
     }
 
     if ($_FILES['derrota']['name'] != "") { // El campo foto contiene una imagen...
         // Primero, hay que validar que se trata de un JPG/GIF/PNG
-        $extension = end(explode(".", $_FILES["derrota"]["name"]));
+
         $fichero = $_FILES["derrota"]["type"];
+        $allowedExts = array("jpg", "jpeg", "gif", "png", "JPG", "GIF", "PNG");
+        $extension = end(explode(".", $_FILES["derrota"]["name"]));
+        echo $extension;
         if ((($_FILES["derrota"]["type"] == "image/png")
-        || ($_FILES["derrota"]["type"] == "image/jpg")
-        || ($_FILES["derrota"]["type"] == "image/gif")
-        || ($_FILES["derrota"]["type"] == "image/pjpeg"))
-        && in_array($extension, $allowedExts)) {
+                || ($_FILES["derrota"]["type"] == "image/jpg")
+                || ($_FILES["derrota"]["type"] == "image/gif")
+                || ($_FILES["derrota"]["type"] == "image/jpeg"))
+            && in_array($extension, $allowedExts)
+        ) {
             $directorio = "digimones/" . $nombre . "/"; // directorio de tu elección
 
             // almacenar imagen en el servidor
-            move_uploaded_file($_FILES['derrota']['tmp_name'], $directorio . "d.".$extension);
+            move_uploaded_file($_FILES['derrota']['tmp_name'], $directorio . "d." . $extension);
             echo "la foto de " . $nombre . " a sido añadida con exito";
         } else { // El archivo no es JPG/GIF/PNG
 
