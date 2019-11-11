@@ -1,7 +1,11 @@
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
     <fieldset>
-        <legend>Seleccionar una imagen</legend>
-        <div><input type="file" name="foto" /></div>
+        <legend>Seleccionar imagen normal</legend>
+        <div><input type="file" name="default" /></div>
+        <legend>Seleccionar imagen victoria</legend>
+        <div><input type="file" name="victoria" /></div>
+        <legend>Seleccionar imagen derrota</legend>
+        <div><input type="file" name="derrota" /></div>
         <div style="margin-top: 10px;"><input type="submit" name="submit" />
             <a href="<?php echo $_SERVER['PHP_SELF']; ?>">Reiniciar</a></div>
     </fieldset>
@@ -30,11 +34,6 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
 
             // almacenar imagen en el servidor
             move_uploaded_file($_FILES['foto']['tmp_name'], $directorio);
-            $minFoto = 'min_' . $foto;
-            $resFoto = 'res_' . $foto;
-            resizeImagen($directorio . '/', $foto, 65, 65, $minFoto, $extension);
-            resizeImagen($directorio . '/', $foto, 500, 500, $resFoto, $extension);
-            unlink($directorio . '/' . $foto);
         } else { // El archivo no es JPG/GIF/PNG
             $malformato = $_FILES["foto"]["type"];
             header("Location: cargarImagen.php?error=noFormato&formato=$malformato");
