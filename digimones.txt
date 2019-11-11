@@ -1,2 +1,4 @@
 rosa 12 23 Vacuna 1
 pepe 12 23 Vacuna 1
+gatomon 12 12 Vacuna 2
+perromon 23 23 Vacuna 2
