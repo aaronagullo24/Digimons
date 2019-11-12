@@ -22,6 +22,7 @@ while ($info = fscanf($file, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
     echo "<td>" . $nivel . "</td>";
     echo "<td>" . $evolucion . "</td>";
     echo "<td>";
+
     ?>
     <form method='POST' action="imagen_digimon.php">
         <input type="hidden" name="nombre" id="nombre" value="<?php echo $nombre; ?>">
