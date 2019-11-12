@@ -1,9 +1,12 @@
 <html>
 
 <body>
+    <?php include "funciones.php";
+    boton(); ?>
     <h1>evolucion a nivel 2</h1>
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-        <select id="evolucion1">
+    <form method='POST' action="<?= $_SERVER['PHP_SELF'] ?>">
+
+        <select name="evolucion1">
             <?php
             $file = fopen("digimones.txt", "a+");
             while ($info = fscanf($file, "%s\t%s\t%s\t%s\t%s\n")) {
@@ -11,7 +14,6 @@
                 if ($nivel == 1) {
                     ?>
                     <option value="<?php echo $nombre ?>"><?php echo $nombre ?></option>
-                    <input type="hidden" name="nombre1" id="nombre1" value="<?php echo $nombre; ?>">
             <?php
                 }
             }
@@ -19,7 +21,7 @@
         </select>
 
 
-        <select id="evolucion2">
+        <select name="evolucion2">
             <?php
             $file = fopen("digimones.txt", "a+");
             while ($info = fscanf($file, "%s\t%s\t%s\t%s\t%s\n")) {
@@ -27,34 +29,115 @@
                 if ($nivel == 2) {
                     ?>
                     <option value="<?php echo $nombre ?>"><?php echo $nombre ?></option>
-                    <input type="hidden" name="nombre2" id="nombre2" value="<?php echo $nombre; ?>">
+
             <?php
                 }
             }
             ?>
         </select>
-        <input type='submit' value='Evolucionar'>
+        <input type='submit' value='Evolucionar' name='Evolucion'>
     </form>
 
     <?php
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['Evolucion'])) {
+        echo "entra";
         $nombre1 = "";
-        $nombre1 = $_POST['nombre1'];
+        $nombre1 = $_POST['evolucion1'];
         $nombre2 = "";
-        $nombre2 = $_POST['nombre2'];
+        $nombre2 = $_POST['evolucion2'];
+        $arrayDigimones = [];
+        $file = fopen("digimones.txt", "a+");
         while ($info = fscanf($file, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
-            list($nombre, $Ataque, $defensa, $tipo, $nivel, $evolucion) = $info;
-            if ($nombre1 == $nombre) {
-                $file = fopen("digimones.txt", "a+");
-                fwrite($file, $nombre . " ");
-                fwrite($file, $ataque . " ");
-                fwrite($file, $defensa . " ");
-                fwrite($file, $tipo . " ");
-                fwrite($file, $nivel . " ");
-                fwrite($file, $nombre2 . "\n");
+            $nombre = $info[0];
+            list(
+                $arrayDigimones[$nombre]['nombre'], $arrayDigimones[$nombre]['ataque'], $arrayDigimones[$nombre]['defensa'], $arrayDigimones[$nombre]['tipo'], $arrayDigimones[$nombre]['nivel'], $arrayDigimones[$nombre]['evolucion']
+            ) = $info;
+        }
+
+        if ($arrayDigimones[$nombre1]['tipo'] == $arrayDigimones[$nombre2]['tipo']) {
+
+            $arrayDigimones[$nombre1]['evolucion'] = $nombre2;
+            $file = fopen("digimones.txt", "w");
+            foreach ($arrayDigimones as $linea) {
+                fwrite($file, $linea['nombre'] . " ");
+                fwrite($file, $linea['ataque'] . " ");
+                fwrite($file, $linea['defensa'] . " ");
+                fwrite($file, $linea['tipo'] . " ");
+                fwrite($file, $linea['nivel'] . " ");
+                fwrite($file, $linea['evolucion'] . "\n");
             }
         }
     }
+
+
+
+    ?>
+    <h1>evolucion a nivel 3</h1>
+    <form method='POST' action="<?= $_SERVER['PHP_SELF'] ?>">
+
+        <select name="evolucion4">
+            <?php
+            $file = fopen("digimones.txt", "a+");
+            while ($info = fscanf($file, "%s\t%s\t%s\t%s\t%s\n")) {
+                list($nombre, $Ataque, $defensa, $tipo, $nivel) = $info;
+                if ($nivel == 2) {
+                    ?>
+                    <option value="<?php echo $nombre ?>"><?php echo $nombre ?></option>
+            <?php
+                }
+            }
+            ?>
+        </select>
+
+
+        <select name="evolucion5">
+            <?php
+            $file = fopen("digimones.txt", "a+");
+            while ($info = fscanf($file, "%s\t%s\t%s\t%s\t%s\n")) {
+                list($nombre, $Ataque, $defensa, $tipo, $nivel) = $info;
+                if ($nivel == 3) {
+                    ?>
+                    <option value="<?php echo $nombre ?>"><?php echo $nombre ?></option>
+
+            <?php
+                }
+            }
+            ?>
+        </select>
+        <input type='submit' value='Evolucionar' name='Evolucion2'>
+    </form>
+
+    <?php
+    if (isset($_POST['Evolucion2'])) {
+        echo "entra";
+        $nombre1 = "";
+        $nombre1 = $_POST['evolucion4'];
+        $nombre2 = "";
+        $nombre2 = $_POST['evolucion5'];
+        $arrayDigimones = [];
+        $file = fopen("digimones.txt", "a+");
+        while ($info = fscanf($file, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
+            $nombre = $info[0];
+            list(
+                $arrayDigimones[$nombre]['nombre'], $arrayDigimones[$nombre]['ataque'], $arrayDigimones[$nombre]['defensa'], $arrayDigimones[$nombre]['tipo'], $arrayDigimones[$nombre]['nivel'], $arrayDigimones[$nombre]['evolucion']
+            ) = $info;
+        }
+
+        if ($arrayDigimones[$nombre1]['tipo'] == $arrayDigimones[$nombre2]['tipo']) {
+
+            $arrayDigimones[$nombre1]['evolucion'] = $nombre2;
+            $file = fopen("digimones.txt", "w");
+            foreach ($arrayDigimones as $linea) {
+                fwrite($file, $linea['nombre'] . " ");
+                fwrite($file, $linea['ataque'] . " ");
+                fwrite($file, $linea['defensa'] . " ");
+                fwrite($file, $linea['tipo'] . " ");
+                fwrite($file, $linea['nivel'] . " ");
+                fwrite($file, $linea['evolucion'] . "\n");
+            }
+        }
+    }
+
     ?>
 
 

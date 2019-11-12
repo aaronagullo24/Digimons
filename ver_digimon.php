@@ -1,4 +1,6 @@
 <?php
+include "funciones.php";
+boton();
 echo ("<table border='1'");
 echo ("<tr>");
 echo ("<td>Nombre</td>");
@@ -6,10 +8,11 @@ echo ("<td>Ataque</td>");
 echo ("<td>Defensa</td>");
 echo ("<td>Tipo</td>");
 echo ("<td>Nivel</td>");
+echo ("<td>Evolucion</td>");
 
 $file = fopen("digimones.txt", "a+");
-while ($info = fscanf($file, "%s\t%s\t%s\t%s\t%s\n")) {
-    list($nombre, $Ataque, $defensa, $tipo, $nivel) = $info;
+while ($info = fscanf($file, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
+    list($nombre, $Ataque, $defensa, $tipo, $nivel, $evolucion) = $info;
 
     echo ("<tr>");
     echo "<td>" . $nombre . "</td>";
@@ -17,6 +20,7 @@ while ($info = fscanf($file, "%s\t%s\t%s\t%s\t%s\n")) {
     echo "<td>" . $defensa . "</td>";
     echo "<td>" . $tipo . "</td>";
     echo "<td>" . $nivel . "</td>";
+    echo "<td>" . $evolucion . "</td>";
     echo "<td>";
     ?>
     <form method='POST' action="imagen_digimon.php">
