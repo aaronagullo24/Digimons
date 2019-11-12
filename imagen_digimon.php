@@ -11,13 +11,15 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
 
         $fichero = $_FILES["normal"]["type"];
         $allowedExts = array("jpg", "jpeg", "gif", "png", "JPG", "GIF", "PNG");
-        $extension = end(explode(".", $_FILES["normal"]["name"]));
+        $ext = explode(".", $_FILES["normal"]["name"]);
+        $extension = end($ext);
         echo $extension;
         if ((($_FILES["normal"]["type"] == "image/png")
                 || ($_FILES["normal"]["type"] == "image/jpg")
                 || ($_FILES["normal"]["type"] == "image/gif")
                 || ($_FILES["normal"]["type"] == "image/jpeg"))
-            && in_array($extension, $allowedExts)) {
+            && in_array($extension, $allowedExts)
+        ) {
 
             $directorio = "digimones/" . $nombre . "/"; // directorio 
 
@@ -25,20 +27,20 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
             move_uploaded_file($_FILES['normal']['tmp_name'], $directorio . "n." . $extension);
             echo "la foto de " . $nombre . " a sido añadida con exito";
         } else { // El archivo no es JPG/GIF/PNG
-            echo "error ererer";
-            exit;
+
+            echo "El archivo debe ser una imagen";
         }
     } else { // El campo foto NO contiene una imagen
-        header("Location: ver_digimon.php?");
+
         echo "erroe";
-        exit;
     }
 
     if ($_FILES['victoria']['name'] != "") { // El campo foto contiene una imagen...
 
         $fichero = $_FILES["victoria"]["type"];
         $allowedExts = array("jpg", "jpeg", "gif", "png", "JPG", "GIF", "PNG");
-        $extension = end(explode(".", $_FILES["victoria"]["name"]));
+        $ext = explode(".", $_FILES["normal"]["name"]);
+        $extension = end($ext);
         echo $extension;
         if ((($_FILES["victoria"]["type"] == "image/png")
                 || ($_FILES["victoria"]["type"] == "image/jpg")
@@ -53,13 +55,11 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
             echo "la foto de " . $nombre . " a sido añadida con exito";
         } else { // El archivo no es JPG/GIF/PNG
 
-            echo "error";
-            exit;
+            echo "El archivo debe ser una imagen";
         }
     } else { // El campo foto NO contiene una imagen
-        
+
         echo "erroe";
-        exit;
     }
 
     if ($_FILES['derrota']['name'] != "") { // El campo foto contiene una imagen...
@@ -67,7 +67,8 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
 
         $fichero = $_FILES["derrota"]["type"];
         $allowedExts = array("jpg", "jpeg", "gif", "png", "JPG", "GIF", "PNG");
-        $extension = end(explode(".", $_FILES["derrota"]["name"]));
+        $ext = explode(".", $_FILES["normal"]["name"]);
+        $extension = end($ext);
         echo $extension;
         if ((($_FILES["derrota"]["type"] == "image/png")
                 || ($_FILES["derrota"]["type"] == "image/jpg")
@@ -82,13 +83,11 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
             echo "la foto de " . $nombre . " a sido añadida con exito";
         } else { // El archivo no es JPG/GIF/PNG
 
-            echo "eror";
-            exit;
+            echo "El archivo debe ser una imagen";
         }
     } else { // El campo foto NO contiene una imagen
-        header("Location: ver_digimon.php?");
-        echo "erroe";
-        exit;
+
+        echo "debe conteneer una imagen";
     }
 }
 
