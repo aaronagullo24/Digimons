@@ -29,6 +29,22 @@ if (isset($_POST['nombre'])) {
         mkdir("Usuarios/" . $nombre, 0777);
 
         fclose($file);
+        $directorio = "Usuarios/" . $nombre . "/";
+
+        $file_digimon = fopen($directorio . "Digimons_usuarios.txt", "a+");
+        $digimones = fopen("digimones.txt", "a+");
+        while ($info = fscanf($digimones, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
+            $nombreD = $info[0];
+            list(
+                $arrayDigimones[$nombreD]['nombre'], $arrayDigimones[$nombreD]['ataque'], $arrayDigimones[$nombreD]['defensa'], $arrayDigimones[$nombreD]['tipo'], $arrayDigimones[$nombreD]['nivel'], $arrayDigimones[$nombreD]['evolucion']
+            ) = $info;
+            if ($arrayDigimones[$nombreD]['nivel'] == 1) {
+                var_dump($arrayDigimones);
+                $digimonAleatorio = array_rand($arrayDigimones, 2);
+               
+            }
+        }
+     
     }
 }
 

@@ -3,7 +3,7 @@
 <body>
     <?php include "funciones.php";
     boton(); ?>
-    <h1>evolucion a nivel 2</h1>
+    <h1>Evolucion a nivel 2</h1>
     <form method='POST' action="<?= $_SERVER['PHP_SELF'] ?>">
 
         <select name="evolucion1">
@@ -13,7 +13,7 @@
                 list($nombre, $Ataque, $defensa, $tipo, $nivel) = $info;
                 if ($nivel == 1) {
                     ?>
-                    <option value="<?php echo $nombre ?>"><?php echo $nombre ?></option>
+                    <option value="<?php echo $nombre ?>"><?php echo $nombre, "-", $tipo ?></option>
             <?php
                 }
             }
@@ -28,7 +28,7 @@
                 list($nombre, $Ataque, $defensa, $tipo, $nivel) = $info;
                 if ($nivel == 2) {
                     ?>
-                    <option value="<?php echo $nombre ?>"><?php echo $nombre ?></option>
+                    <option value="<?php echo $nombre ?>"><?php echo $nombre, "-", $tipo ?></option>
 
             <?php
                 }
@@ -40,7 +40,6 @@
 
     <?php
     if (isset($_POST['Evolucion'])) {
-        echo "entra";
         $nombre1 = "";
         $nombre1 = $_POST['evolucion1'];
         $nombre2 = "";
@@ -66,13 +65,13 @@
                 fwrite($file, $linea['nivel'] . " ");
                 fwrite($file, $linea['evolucion'] . "\n");
             }
-        }
+        } else echo "El digimon debe ser del mismo tipo";
     }
 
 
 
     ?>
-    <h1>evolucion a nivel 3</h1>
+    <h1>Evolucion a nivel 3</h1>
     <form method='POST' action="<?= $_SERVER['PHP_SELF'] ?>">
 
         <select name="evolucion4">
@@ -82,7 +81,7 @@
                 list($nombre, $Ataque, $defensa, $tipo, $nivel) = $info;
                 if ($nivel == 2) {
                     ?>
-                    <option value="<?php echo $nombre ?>"><?php echo $nombre ?></option>
+                    <option value="<?php echo $nombre ?>"><?php echo $nombre, "-", $tipo ?></option>
             <?php
                 }
             }
@@ -97,7 +96,7 @@
                 list($nombre, $Ataque, $defensa, $tipo, $nivel) = $info;
                 if ($nivel == 3) {
                     ?>
-                    <option value="<?php echo $nombre ?>"><?php echo $nombre ?></option>
+                    <option value="<?php echo $nombre ?>"><?php echo $nombre, "-", $tipo ?></option>
 
             <?php
                 }
@@ -109,7 +108,6 @@
 
     <?php
     if (isset($_POST['Evolucion2'])) {
-        echo "entra";
         $nombre1 = "";
         $nombre1 = $_POST['evolucion4'];
         $nombre2 = "";
@@ -135,7 +133,7 @@
                 fwrite($file, $linea['nivel'] . " ");
                 fwrite($file, $linea['evolucion'] . "\n");
             }
-        }
+        } else echo "El digimon debe ser del mismo tipo para que pueda evolucionar";
     }
 
     ?>

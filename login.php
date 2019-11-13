@@ -15,7 +15,6 @@ if (isset($_GET['nombre'])) {
     fclose($fichero);
 
     if ($encontrado) {
-        echo "correcto";
         header('location:inicio_usuario.php?nombre=' . $nombre);
     } else {
         echo "USUARIO NO VALIDO";

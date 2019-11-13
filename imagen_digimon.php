@@ -1,5 +1,6 @@
 <?php
-
+include "funciones.php";
+boton();
 $nombre = "";
 $nombre = $_POST['nombre'];
 if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
@@ -13,7 +14,6 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
         $allowedExts = array("jpg", "jpeg", "gif", "png", "JPG", "GIF", "PNG");
         $ext = explode(".", $_FILES["normal"]["name"]);
         $extension = end($ext);
-        echo $extension;
         if ((($_FILES["normal"]["type"] == "image/png")
                 || ($_FILES["normal"]["type"] == "image/jpg")
                 || ($_FILES["normal"]["type"] == "image/gif")
@@ -24,8 +24,8 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
             $directorio = "digimones/" . $nombre . "/"; // directorio 
 
             // almacenar imagen en el servidor
-            move_uploaded_file($_FILES['normal']['tmp_name'], $directorio . "n." . $extension);
-            echo "la foto de " . $nombre . " a sido añadida con exito";
+            move_uploaded_file($_FILES['normal']['tmp_name'], $directorio . "n.jpg");
+           
         } else { // El archivo no es JPG/GIF/PNG
 
             echo "El archivo debe ser una imagen";
@@ -41,7 +41,6 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
         $allowedExts = array("jpg", "jpeg", "gif", "png", "JPG", "GIF", "PNG");
         $ext = explode(".", $_FILES["normal"]["name"]);
         $extension = end($ext);
-        echo $extension;
         if ((($_FILES["victoria"]["type"] == "image/png")
                 || ($_FILES["victoria"]["type"] == "image/jpg")
                 || ($_FILES["victoria"]["type"] == "image/gif")
@@ -51,8 +50,8 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
             $directorio = "digimones/" . $nombre . "/"; // directorio 
 
             // almacenar imagen en el servidor
-            move_uploaded_file($_FILES['victoria']['tmp_name'], $directorio . "v." . $extension);
-            echo "la foto de " . $nombre . " a sido añadida con exito";
+            move_uploaded_file($_FILES['victoria']['tmp_name'], $directorio . "v.jpg");
+           
         } else { // El archivo no es JPG/GIF/PNG
 
             echo "El archivo debe ser una imagen";
@@ -69,7 +68,6 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
         $allowedExts = array("jpg", "jpeg", "gif", "png", "JPG", "GIF", "PNG");
         $ext = explode(".", $_FILES["normal"]["name"]);
         $extension = end($ext);
-        echo $extension;
         if ((($_FILES["derrota"]["type"] == "image/png")
                 || ($_FILES["derrota"]["type"] == "image/jpg")
                 || ($_FILES["derrota"]["type"] == "image/gif")
@@ -79,8 +77,8 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
             $directorio = "digimones/" . $nombre . "/"; // directorio de tu elección
 
             // almacenar imagen en el servidor
-            move_uploaded_file($_FILES['derrota']['tmp_name'], $directorio . "d." . $extension);
-            echo "la foto de " . $nombre . " a sido añadida con exito";
+            move_uploaded_file($_FILES['derrota']['tmp_name'], $directorio . "d.jpg");
+           
         } else { // El archivo no es JPG/GIF/PNG
 
             echo "El archivo debe ser una imagen";
@@ -89,6 +87,7 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
 
         echo "debe conteneer una imagen";
     }
+    echo "la foto de " . $nombre . " a sido añadida con exito";
 }
 
 
