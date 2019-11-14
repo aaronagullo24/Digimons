@@ -44,18 +44,21 @@ if (isset($_POST['nombre'])) {
                 $arrayDigimones[$nombreD]['nombre'], $arrayDigimones[$nombreD]['ataque'], $arrayDigimones[$nombreD]['defensa'], $arrayDigimones[$nombreD]['tipo'], $arrayDigimones[$nombreD]['nivel'], $arrayDigimones[$nombreD]['evolucion']
             ) = $info;
         }
-        // var_dump($arrayDigimones);
+
         //array solo nivel uno
         foreach ($arrayDigimones as $caracteristica => $valor) {
             if ($valor['nivel'] == 1) {
                 $Digimon1[] = $valor;
             }
-            //
-
-
         }
         $digi_rand = array_rand($Digimon1, 3);
         var_dump($digi_rand);
+
+        for ($i = 0; $i < count($digi_rand); $i++) {
+            $did_cadena = implode("\t", $Digimon1[$digi_rand[$i]]);
+            fwrite($file_digimon, $did_cadena . "\n");
+        }
+        fclose($file_digimon);
     }
 }
 
