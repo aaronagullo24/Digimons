@@ -6,6 +6,9 @@ $contraseña = "";
 if (isset($_POST['nombre'])) {
     $nombre = $_POST['nombre'];
     $contraseña = $_POST['contraseña'];
+    $arrayDigimones = [];
+    $Digimon1 = [];
+    $i = 0;
 
     $encontrado = "";
 
@@ -31,22 +34,31 @@ if (isset($_POST['nombre'])) {
         fclose($file);
         $directorio = "Usuarios/" . $nombre . "/";
 
+
         $file_digimon = fopen($directorio . "Digimons_usuarios.txt", "a+");
         $digimones = fopen("digimones.txt", "a+");
+        //transformacion a array
         while ($info = fscanf($digimones, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
             $nombreD = $info[0];
             list(
                 $arrayDigimones[$nombreD]['nombre'], $arrayDigimones[$nombreD]['ataque'], $arrayDigimones[$nombreD]['defensa'], $arrayDigimones[$nombreD]['tipo'], $arrayDigimones[$nombreD]['nivel'], $arrayDigimones[$nombreD]['evolucion']
             ) = $info;
-            if ($arrayDigimones[$nombreD]['nivel'] == 1) {
-                var_dump($arrayDigimones);
-                $digimonAleatorio = array_rand($arrayDigimones, 2);
-               
-            }
         }
-     
+        // var_dump($arrayDigimones);
+        //array solo nivel uno
+        foreach ($arrayDigimones as $caracteristica => $valor) {
+            if ($valor['nivel'] == 1) {
+                $Digimon1[] = $valor;
+            }
+            //
+
+
+        }
+        $digi_rand = array_rand($Digimon1, 3);
+        var_dump($digi_rand);
     }
 }
+
 
 ?>
 <html>

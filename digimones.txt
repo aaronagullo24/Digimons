@@ -1,5 +1,5 @@
-
-gatomon 12 12 Vacuna 2 conejomon
-perromon 23 23 Vacuna 2 conejomon
-conejomon 23 23 Vacuna 3 
-tetamon 2 2 Animal 1 
+rosa 12 23 Vacuna 1 manolo
+pepe 12 23 Vacuna 1 
+manolo 12 23 Vacuna 2 frans
+fran 12 23 Vacuna 1 
+frans 12 23 Vacuna 3 
