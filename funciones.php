@@ -4,7 +4,8 @@ function boton()
     ?>
     <h1 style="color:black;float:center">ADMINISTRACION</h1>
 
-    <body Style="background-color:springgreen;">
+    <body background="fondo.png"Style="text-align: center;">
+        
         <form method="POST" action="alta_usuario.php" style="display:inline; color:mediumspringgreen">
             <input name="cadena" type="hidden">
             <input type="submit" value="alta usuario" name="alta usuario" id="alta usuario">

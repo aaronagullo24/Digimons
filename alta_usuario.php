@@ -52,7 +52,6 @@ if (isset($_POST['nombre'])) {
             }
         }
         $digi_rand = array_rand($Digimon1, 3);
-        var_dump($digi_rand);
 
         for ($i = 0; $i < count($digi_rand); $i++) {
             $did_cadena = implode("\t", $Digimon1[$digi_rand[$i]]);

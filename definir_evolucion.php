@@ -1,6 +1,6 @@
 <html>
 
-<body>
+<body >
     <?php include "funciones.php";
     boton(); ?>
     <h1>Evolucion a nivel 2</h1>
@@ -66,6 +66,8 @@
                 fwrite($file, $linea['evolucion'] . "\n");
             }
         } else echo "El digimon debe ser del mismo tipo";
+
+        fclose($file);
     }
 
 
@@ -134,6 +136,8 @@
                 fwrite($file, $linea['evolucion'] . "\n");
             }
         } else echo "El digimon debe ser del mismo tipo para que pueda evolucionar";
+
+        fclose($file);
     }
 
     ?>

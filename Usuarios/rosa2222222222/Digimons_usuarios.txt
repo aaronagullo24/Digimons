@@ -1,3 +1,0 @@
-rosa	12	23	Vacuna	1	manolo
-pepe	12	23	Vacuna	1	
-fran	12	23	Vacuna	1	

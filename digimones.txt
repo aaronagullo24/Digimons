@@ -1,5 +1,10 @@
-rosa 12 23 Vacuna 1 manolo
-pepe 12 23 Vacuna 1 
-manolo 12 23 Vacuna 2 frans
-fran 12 23 Vacuna 1 
-frans 12 23 Vacuna 3 
+agumon 12 12 Animal 1 
+angemon 14 12 Virus 1 Togemon
+ankylomon 20 12 Vacuna 2 
+Armadillomon 19 12 Planta 1 
+birdramon 19 12 Virus 1 
+Gabumon 19 12 Elemento 2 
+Togemon 19 12 Virus 2 
+Palmon 19 12 Animal 1 
+Lilimon 19 12 Vacuna 3 
+Tentemon 19 12 Vacuna 2 
