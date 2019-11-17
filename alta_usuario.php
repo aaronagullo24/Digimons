@@ -32,6 +32,7 @@ if (isset($_POST['nombre'])) {
         mkdir("Usuarios/" . $nombre, 0777);
 
         fclose($file);
+        
         $directorio = "Usuarios/" . $nombre . "/";
 
 

@@ -2,7 +2,7 @@ agumon 12 12 Animal 1
 angemon 14 12 Virus 1 Togemon
 ankylomon 20 12 Vacuna 2 
 Armadillomon 19 12 Planta 1 
-birdramon 19 12 Virus 1 
+birdramon 19 12 Virus 1 Togemon
 Gabumon 19 12 Elemento 2 
 Togemon 19 12 Virus 2 
 Palmon 19 12 Animal 1 

@@ -1,6 +1,6 @@
 <html>
 
-<body >
+<body>
     <?php include "funciones.php";
     boton(); ?>
     <h1>Evolucion a nivel 2</h1>
@@ -45,6 +45,7 @@
         $nombre2 = "";
         $nombre2 = $_POST['evolucion2'];
         $arrayDigimones = [];
+        $arrayInicio = [];
         $file = fopen("digimones.txt", "a+");
         while ($info = fscanf($file, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
             $nombre = $info[0];
@@ -52,6 +53,8 @@
                 $arrayDigimones[$nombre]['nombre'], $arrayDigimones[$nombre]['ataque'], $arrayDigimones[$nombre]['defensa'], $arrayDigimones[$nombre]['tipo'], $arrayDigimones[$nombre]['nivel'], $arrayDigimones[$nombre]['evolucion']
             ) = $info;
         }
+
+
 
         if ($arrayDigimones[$nombre1]['tipo'] == $arrayDigimones[$nombre2]['tipo']) {
 
@@ -65,6 +68,7 @@
                 fwrite($file, $linea['nivel'] . " ");
                 fwrite($file, $linea['evolucion'] . "\n");
             }
+            echo "el Digmons " . $arrayDigimones[$nombre1]['nombre'] . " evoluciona a " . $arrayDigimones[$nombre2]['nombre'];
         } else echo "El digimon debe ser del mismo tipo";
 
         fclose($file);
@@ -135,6 +139,7 @@
                 fwrite($file, $linea['nivel'] . " ");
                 fwrite($file, $linea['evolucion'] . "\n");
             }
+            echo "el Digmons " . $arrayDigimones[$nombre1]['nombre'] . " evoluciona a " . $arrayDigimones[$nombre2]['nombre'];
         } else echo "El digimon debe ser del mismo tipo para que pueda evolucionar";
 
         fclose($file);

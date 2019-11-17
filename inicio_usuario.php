@@ -8,13 +8,14 @@
     <?php
     include "funciones.php";
     $nombre = "";
-
+   
     if (isset($_GET['nombre'])) {
-       $nombre = $_GET['nombre'];
+        $nombre = $_GET['nombre'];
+        botonUsuario($nombre);
         echo $nombre;
-        botonUsuario();
     }
     ?>
+
 </body>
 
 </html>

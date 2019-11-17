@@ -103,6 +103,5 @@ if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
         <div><input type="file" name="derrota" id="derrota" /></div>
         <input type="hidden" name="nombre" id="nombre" value="<?php echo $nombre; ?>">
         <div style="margin-top: 10px;"><input type="submit" name="submit" />
-            <a href="<?php echo $_SERVER['PHP_SELF']; ?>">Reiniciar</a></div>
     </fieldset>
 </form>

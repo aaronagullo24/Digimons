@@ -2,9 +2,9 @@
 $nombre = ""; //usuario
 $contraseña = "";
 
-if (isset($_GET['nombre'])) {
-    $nombre = $_GET['nombre'];
-    $contraseña = $_GET['contraseña'];
+if (isset($_POST['nombre'])) {
+    $nombre = $_POST['nombre'];
+    $contraseña = $_POST['contraseña'];
     $encontrado = false;
 
 
@@ -22,7 +22,7 @@ if (isset($_GET['nombre'])) {
 }
 ?>
 
-<form method='GET' action="<?= $_SERVER['PHP_SELF'] ?>">
+<form method='POST' action="<?= $_SERVER['PHP_SELF'] ?>">
 
     Nombre: <input type='text' name='nombre' id='nombre' value="<?= $nombre ?>"><br>
 
