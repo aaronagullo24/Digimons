@@ -1,9 +1,8 @@
 <?php
 include "funciones.php";
 $nombre = "";
-if (isset($_POST['Equipo']) || isset($_GET['nombreUsu'])) {
+if (isset($_POST['Equipo']) ){
     $nombre = $_POST['nombre'];
-    //  $nombreUsu = $_GET['nombreUsu'];
     botonUsuario($nombre);
     echo "<div style='vertical-align:top;'>";
     $file = fopen("./Usuarios/$nombre/Digimons_usuarios.txt", "a+");
@@ -44,7 +43,7 @@ if (isset($_POST['Equipo']) || isset($_GET['nombreUsu'])) {
                 echo ("</table>");
             }
             ?>
-        <input type="hidden" name="nombre" id="nombre" value="<?php echo $nombreUsu; ?>">
+        <input type="hidden" name="nombre" id="nombre" value="<?php echo $nombre; ?>">
         <input type="submit" name="seleccion" />
         </form>
         </div>
@@ -55,6 +54,7 @@ if (isset($_POST['Equipo']) || isset($_GET['nombreUsu'])) {
     if (isset($_POST['seleccion'])) {
         $elegir = $_POST["elegir"];
         $nombreUsu = $_POST['nombre'];
+        echo $nombreUsu;
         if (empty($elegir)) {
             header('location:organizar_equipo.php?nombre=' . $nombreUsu);
         } else {

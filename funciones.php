@@ -33,7 +33,7 @@ function boton()
 function botonUsuario($nombre)
 {
     ?>
-    <h1 style="color:black;float:center">Entorno del usuario</h1>
+    <h1 style="color:black;float:center">Entorno de Usuario</h1>
 
     <body background="fondo.png" Style="text-align: center;">
         <form method="POST" action="ver_mis_digimones.php" style="display:inline; color:mediumspringgreen">
@@ -55,6 +55,9 @@ function botonUsuario($nombre)
         <form method="POST" action="digievolucionar.php" style="display:inline;color:mediumspringgreen">
             <input type="hidden" name="nombre" id="nombre" value="<?php echo $nombre; ?>" />
             <input type="submit" value="Evolucionar" name="Evolucionar" id="Evolucionar">
+        </form>
+        <form method="POST" action="login.php" style="display:inline;color:mediumspringgreen">
+            <input type="submit" value="cerrar sesion" name="cerrar sesion" id="cerrar sesion">
         </form>
 
 
