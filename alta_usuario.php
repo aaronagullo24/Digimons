@@ -32,10 +32,10 @@ if (isset($_POST['nombre'])) {
         mkdir("Usuarios/" . $nombre, 0777);
 
         fclose($file);
-        
+
+
+
         $directorio = "Usuarios/" . $nombre . "/";
-
-
         $file_digimon = fopen($directorio . "Digimons_usuarios.txt", "a+");
         $digimones = fopen("digimones.txt", "a+");
         //transformacion a array

@@ -47,6 +47,8 @@ if (isset($_POST['nombre'])) {
         mkdir("digimones/" . $nombre, 0777);
 
         fclose($file);
+
+        
         echo "El digimon " . $nombre . " fue creado con exito";
     }
 }

@@ -9,7 +9,7 @@ echo ("<td>Defensa</td>");
 echo ("<td>Tipo</td>");
 echo ("<td>Nivel</td>");
 echo ("<td>Evolucion</td>");
-echo("<td>Foto</td>");
+echo ("<td>Foto</td>");
 
 $file = fopen("digimones.txt", "a+");
 while ($info = fscanf($file, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
@@ -22,7 +22,7 @@ while ($info = fscanf($file, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
     echo "<td>" . $tipo . "</td>";
     echo "<td>" . $nivel . "</td>";
     echo "<td>" . $evolucion . "</td>";
-    echo "<td><img src=./digimones/".$nombre."/n.jpg heigth='100' width='100' ></td>";
+    echo "<td><img src=./digimones/" . $nombre . "/n.jpg heigth='100' width='100' ></td>";
     echo "<td>";
 
     ?>
