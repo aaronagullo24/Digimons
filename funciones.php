@@ -98,6 +98,35 @@ function verDigimones($nombre)
     }
     echo "</div>";
 }
+function miEquipo($nombreUsu)
+{
+    echo "<div style='vertical-align:top;'>";
+    $file = fopen("./Usuarios/$nombreUsu/Equipo_usuarios.txt", "a+");
+    while ($info = fscanf($file, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
+        list($nombreD, $Ataque, $defensa, $tipo, $nivel, $evolucion) = $info;
 
+        echo ("<table style='HEIGHT:20%;WIDTH:20% ;display:inline-table'; border=1;");
+        echo ("<tr>");
+        echo "<td COLSPAN='2' align='center' valign='middle'><img src=./digimones/" . $nombreD . "/n.jpg heigth='100' width='100' ></td>";
+        echo ("<tr>");
+        echo ("<td>Nombre</td>");
+        echo "<td>" . $nombreD . "</td>";
+        echo ("<tr >");
+        echo ("<td>Ataque</td>");
+        echo "<td>" . $Ataque . "</td>";
+        echo ("<tr >");
+        echo ("<td>Defensa</td>");
+        echo "<td>" . $defensa . "</td>";
+        echo ("<tr >");
+        echo ("<td>Tipo</td>");
+        echo "<td>" . $tipo . "</td>";
+        echo ("<tr >");
+        echo ("<td>Nivel</td>");
+        echo "<td>" . $nivel . "</td>";
+        echo ("<tr >");
+        echo ("<td>Evolucion</td>");
+        echo "<td>" . $evolucion . "</td>";
 
-
+        echo ("</table>");
+    }
+}

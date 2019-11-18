@@ -48,7 +48,7 @@ if (isset($_POST['nombre'])) {
 
         fclose($file);
 
-        
+
         echo "El digimon " . $nombre . " fue creado con exito";
     }
 }
