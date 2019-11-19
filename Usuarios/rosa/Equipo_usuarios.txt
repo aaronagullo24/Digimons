@@ -1,4 +1,4 @@
 agumon 12 12 Animal 1 
+	angemon 14 12 Virus 1 Togemon
 	Armadillomon 19 12 Planta 1 
-	birdramon 19 12 Virus 1 
 

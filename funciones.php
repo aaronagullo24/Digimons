@@ -130,3 +130,5 @@ function miEquipo($nombreUsu)
         echo ("</table>");
     }
 }
+
+

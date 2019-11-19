@@ -23,9 +23,11 @@ if (isset($_POST['seleccion'])) {
         <?php
                 } else {
                     $file = fopen("./Usuarios/$nombreUsu/Equipo_usuarios.txt", "w");
-                    foreach ($elegir as $linea) {
-                        fwrite($file, $linea . " ");
-                    }
+
+                    $did_cadena = implode("\t", $elegir);
+                    fwrite($file, $did_cadena . "\n");
+
+                    fclose($file);
                     botonUsuario($nombreUsu);
                     echo "<br>";
                     echo "Su nuevo equipo es: ";
