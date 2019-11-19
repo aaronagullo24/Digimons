@@ -42,16 +42,17 @@ if (isset($_POST['Jugar'])) {
             $arrayDigimonesVisitante[$nombreD]['nombre'], $arrayDigimonesVisitante[$nombreD]['ataque'], $arrayDigimonesVisitante[$nombreD]['defensa'], $arrayDigimonesVisitante[$nombreD]['tipo'], $arrayDigimonesVisitante[$nombreD]['nivel'], $arrayDigimonesVisitante[$nombreD]['evolucion']
         ) = $info;
     }
-
-    var_dump($arrayDigimonesVisitante);
+$total=0;
+    
     foreach ($arrayDigimonesLocal as $nombreD => $atributo) {
         foreach ($arrayDigimonesVisitante as $nombreV => $valor) {
-            if (([$atributo]=="virus") == ([$valor]=="virus")) {
-               [$atributo] =+ 10;
-               print_r([$atributo]);
+            if (($arrayDigimonesLocal[$nombreD]['tipo']=="Animal") == (($arrayDigimonesLocal[$nombreV]['tipo']=="Animal"))) {
+               $total=$arrayDigimonesLocal[$nombreD]['ataque']+=$arrayDigimonesLocal[$nombreD]['defensa'] += 10;
             }
         }
+        
     }
+    echo $total;
 
     
 }
