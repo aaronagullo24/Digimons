@@ -26,7 +26,7 @@ if (isset($_POST['seleccion'])) {
                     foreach ($elegir as $linea) {
                         fwrite($file, $linea . " ");
                     }
-                    botonUsuario($nombre);
+                    botonUsuario($nombreUsu);
                     echo "<br>";
                     echo "Su nuevo equipo es: ";
                     miEquipo($nombreUsu);
@@ -38,7 +38,7 @@ if (isset($_POST['seleccion'])) {
             botonUsuario($nombre);
             echo "<br>";
             echo "<fieldset>";
-           echo "<legend> Su equipo de Digimones</legend>";
+            echo "<legend> Su equipo de Digimones</legend>";
             miEquipo($nombre);
             echo "</fieldset>";
             echo "<br>";
@@ -81,13 +81,12 @@ if (isset($_POST['seleccion'])) {
 
         <?php
                 echo ("</table>");
-                
             }
             ?>
         <input type="hidden" name="nombre" id="nombre" value="<?php echo $nombre; ?>">
         <input type="submit" name="seleccion" />
         </form>
-       </fieldset>
+        </fieldset>
         </div>
     <?php
     }
