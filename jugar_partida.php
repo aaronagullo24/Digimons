@@ -1,8 +1,9 @@
 <?php
 if (isset($_POST['Jugar'])) {
     $nombre = $_POST['nombre'];
-
+    $total=0;
     $usu_rand = [];
+    $tipoArray=[];
     $arrayDigimonesVisitante = [];
 
     $directorio = fopen("usuarios.txt", "a+");
@@ -28,9 +29,7 @@ if (isset($_POST['Jugar'])) {
         list(
             $arrayDigimonesLocal[$nombreD]['nombre'], $arrayDigimonesLocal[$nombreD]['ataque'], $arrayDigimonesLocal[$nombreD]['defensa'], $arrayDigimonesLocal[$nombreD]['tipo'], $arrayDigimonesLocal[$nombreD]['nivel'], $arrayDigimonesLocal[$nombreD]['evolucion']
         ) = $info;
-        
     }
-    var_dump($arrayDigimonesLocal);
     //array de los digimones del visitanterival
     $directorio = "Usuarios/" . $nombre_Visitante . "/";
     $file_digimon = fopen($directorio . "Equipo_usuarios.txt", "a+");
@@ -42,17 +41,21 @@ if (isset($_POST['Jugar'])) {
             $arrayDigimonesVisitante[$nombreD]['nombre'], $arrayDigimonesVisitante[$nombreD]['ataque'], $arrayDigimonesVisitante[$nombreD]['defensa'], $arrayDigimonesVisitante[$nombreD]['tipo'], $arrayDigimonesVisitante[$nombreD]['nivel'], $arrayDigimonesVisitante[$nombreD]['evolucion']
         ) = $info;
     }
-$total=0;
     
     foreach ($arrayDigimonesLocal as $nombreD => $atributo) {
-        foreach ($arrayDigimonesVisitante as $nombreV => $valor) {
-            if (($arrayDigimonesLocal[$nombreD]['tipo']=="Animal") == (($arrayDigimonesLocal[$nombreV]['tipo']=="Animal"))) {
-               $total=$arrayDigimonesLocal[$nombreD]['ataque']+=$arrayDigimonesLocal[$nombreD]['defensa'] += 10;
-            }
-        }
-        
+        $total=$arrayDigimonesLocal[$nombreD]['ataque'];
+        $total+=$arrayDigimonesLocal[$nombreD]['defensa'];
+        $tipoArray[]=[$arrayDigimonesLocal[$nombreD]['tipo']];
+        $tipoArray[]+=$total;
     }
-    echo $total;
 
-    
+    foreach ($arrayDigimonesVisitante as $nombreD => $atributo) {
+        $totalV=$arrayDigimonesVisitante[$nombreD]['ataque'];
+        $totalV+=$arrayDigimonesVisitante[$nombreD]['defensa'];
+        $tipoArrayV[]=[$arrayDigimonesVisitante[$nombreD]['tipo']];
+        $tipoArrayV[]+=$totalV;
+    }
+
+    for($i=0;$i<count($tipoArray);$i++){}
+   
 }

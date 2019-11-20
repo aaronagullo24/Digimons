@@ -131,4 +131,122 @@ function miEquipo($nombreUsu)
     }
 }
 
+function numerorandom($tipoL, $tipoV)
+{
+    $total = 0;
+    if ($tipoL == "Vacuna") {
+        if ($tipoV == "virus") {
+            $total = +10;
+        } else if ($tipoV == "Animal") {
+            $total = +5;
+        } else if ($tipoV == "Planta") {
+            $total = -5;
+        } else if ($tipoV == "Elemental") {
+            $total = -10;
+        }
+    }
+    if ($tipoV == "Vacuna") {
+        if ($tipoL == "virus") {
+            $total = +10;
+        } else if ($tipoL == "Animal") {
+            $total = +5;
+        } else if ($tipoL == "Planta") {
+            $total = -5;
+        } else if ($tipoL == "Elemental") {
+            $total = -10;
+        }
+    }
+    if ($tipoL == "Virus") {
+        if ($tipoV == "Animal") {
+            $total = +10;
+        } else if ($tipoV == "Planta") {
+            $total = +5;
+        } else if ($tipoV == "Elemental") {
+            $total = -5;
+        } else if ($tipoV == "Vacuna") {
+            $total = -10;
+        }
+    }
 
+    if ($tipoV == "Virus") {
+        if ($tipoL == "Animal") {
+            $total = +10;
+        } else if ($tipoL == "Planta") {
+            $total = +5;
+        } else if ($tipoL == "Elemental") {
+            $total = -5;
+        } else if ($tipoL == "Vacuna") {
+            $total = -10;
+        }
+    }
+
+    if ($tipoL == "Animal") {
+        if ($tipoV == "Planta") {
+            $total = +10;
+        } else if ($tipoV == "Elemental") {
+            $total = +5;
+        } else if ($tipoV == "Vacuna") {
+            $total = -5;
+        } else if ($tipoV == "Virus") {
+            $total = -10;
+        }
+    }
+    if ($tipoV == "Animal") {
+        if ($tipoL == "Planta") {
+            $total = +10;
+        } else if ($tipoL == "Elemental") {
+            $total = +5;
+        } else if ($tipoL == "Vacuna") {
+            $total = -5;
+        } else if ($tipoL == "Virus") {
+            $total = -10;
+        }
+    }
+
+    if ($tipoL == "Planta") {
+        if ($tipoV == "Elemental") {
+            $total = +10;
+        } else if ($tipoV == "Vacuna") {
+            $total = +5;
+        } else if ($tipoV == "Virus") {
+            $total = -5;
+        } else if ($tipoV == "Animal") {
+            $total = -10;
+        }
+    }
+
+    if ($tipoV == "Planta") {
+        if ($tipoL == "Elemental") {
+            $total = +10;
+        } else if ($tipoL == "Vacuna") {
+            $total = +5;
+        } else if ($tipoL == "Virus") {
+            $total = -5;
+        } else if ($tipoL == "Animal") {
+            $total = -10;
+        }
+    }
+
+    if ($tipoL == "Elemental") {
+        if ($tipoV == "Vacuna") {
+            $total = +10;
+        } else if ($tipoV == "Virus") {
+            $total = +5;
+        } else if ($tipoV == "Animal") {
+            $total = -5;
+        } else if ($tipoV == "Planta") {
+            $total = -10;
+        }
+    }
+    if ($tipoV == "Elemental") {
+        if ($tipoL == "Vacuna") {
+            $total = +10;
+        } else if ($tipoL == "Virus") {
+            $total = +5;
+        } else if ($tipoL == "Animal") {
+            $total = -5;
+        } else if ($tipoL == "Planta") {
+            $total = -10;
+        }
+    }
+}
