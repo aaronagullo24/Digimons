@@ -145,17 +145,7 @@ function numerorandom($tipoL, $tipoV)
             $total = -10;
         }
     }
-    if ($tipoV == "Vacuna") {
-        if ($tipoL == "virus") {
-            $total = +10;
-        } else if ($tipoL == "Animal") {
-            $total = +5;
-        } else if ($tipoL == "Planta") {
-            $total = -5;
-        } else if ($tipoL == "Elemental") {
-            $total = -10;
-        }
-    }
+ 
     if ($tipoL == "Virus") {
         if ($tipoV == "Animal") {
             $total = +10;
@@ -168,17 +158,6 @@ function numerorandom($tipoL, $tipoV)
         }
     }
 
-    if ($tipoV == "Virus") {
-        if ($tipoL == "Animal") {
-            $total = +10;
-        } else if ($tipoL == "Planta") {
-            $total = +5;
-        } else if ($tipoL == "Elemental") {
-            $total = -5;
-        } else if ($tipoL == "Vacuna") {
-            $total = -10;
-        }
-    }
 
     if ($tipoL == "Animal") {
         if ($tipoV == "Planta") {
@@ -191,17 +170,7 @@ function numerorandom($tipoL, $tipoV)
             $total = -10;
         }
     }
-    if ($tipoV == "Animal") {
-        if ($tipoL == "Planta") {
-            $total = +10;
-        } else if ($tipoL == "Elemental") {
-            $total = +5;
-        } else if ($tipoL == "Vacuna") {
-            $total = -5;
-        } else if ($tipoL == "Virus") {
-            $total = -10;
-        }
-    }
+    
 
     if ($tipoL == "Planta") {
         if ($tipoV == "Elemental") {
@@ -215,17 +184,7 @@ function numerorandom($tipoL, $tipoV)
         }
     }
 
-    if ($tipoV == "Planta") {
-        if ($tipoL == "Elemental") {
-            $total = +10;
-        } else if ($tipoL == "Vacuna") {
-            $total = +5;
-        } else if ($tipoL == "Virus") {
-            $total = -5;
-        } else if ($tipoL == "Animal") {
-            $total = -10;
-        }
-    }
+    
 
     if ($tipoL == "Elemental") {
         if ($tipoV == "Vacuna") {
@@ -238,15 +197,43 @@ function numerorandom($tipoL, $tipoV)
             $total = -10;
         }
     }
-    if ($tipoV == "Elemental") {
-        if ($tipoL == "Vacuna") {
-            $total = +10;
-        } else if ($tipoL == "Virus") {
-            $total = +5;
-        } else if ($tipoL == "Animal") {
-            $total = -5;
-        } else if ($tipoL == "Planta") {
-            $total = -10;
-        }
+  
+
+    $total +=rand(1, 20);
+    return $total;
+}
+function equipoGanadorLocal($user, $arrayGanador){
+    $digequipo = digiArray("./USUARIOS/$user/EQUIPO_USUARIO.TXT");
+    $i=0;
+    foreach ($digequipo as $nombre => $digimon1) {
+        echo "<table class='tabla' style='display:inline; border-style: solid;background-color:black;position:relative; margin-left:15%;font-size: 15px;'>";
+        echo "<tr>";
+        if($arrayGanador[$i]=='V'){
+        echo "<td><img src='./DIGIMONES/" . $nombre . "/victoria.png' style:'width: 110px; height: 110px;'></td>";
+        }elseif($arrayGanador[$i]=='D'){
+        echo "<td><img src='./DIGIMONES/" . $nombre . "/derrota.png' style:'width: 110px; height: 110px;'></td>";
+        }else echo "<td><img src='./DIGIMONES/" . $nombre . "/default.png' style:'width: 110px; height: 110px;'></td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>Nombre: $nombre</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>Ataque: " . $digequipo[$nombre]['ataque'] . "</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>Defensa: " . $digequipo[$nombre]['defensa'] . "</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>Tipo: " . $digequipo[$nombre]['tipo'] . "</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>Nivel: " . $digequipo[$nombre]['nivel'] . "</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>Siguiente Evolución: " . $digequipo[$nombre]['evolucion'] . "</td>";
+        echo "</tr>";
+        echo "</table>";
+        $i++;
+    
     }
 }

@@ -1,10 +1,13 @@
 <?php
+include "funciones.php";
 if (isset($_POST['Jugar'])) {
     $nombre = $_POST['nombre'];
-    $total=0;
+    $total = 0;
     $usu_rand = [];
-    $tipoArray=[];
+    $tipoArray = [];
     $arrayDigimonesVisitante = [];
+    $total=[];
+    $totalV=[];
 
     $directorio = fopen("usuarios.txt", "a+");
 
@@ -41,21 +44,32 @@ if (isset($_POST['Jugar'])) {
             $arrayDigimonesVisitante[$nombreD]['nombre'], $arrayDigimonesVisitante[$nombreD]['ataque'], $arrayDigimonesVisitante[$nombreD]['defensa'], $arrayDigimonesVisitante[$nombreD]['tipo'], $arrayDigimonesVisitante[$nombreD]['nivel'], $arrayDigimonesVisitante[$nombreD]['evolucion']
         ) = $info;
     }
-    
+
     foreach ($arrayDigimonesLocal as $nombreD => $atributo) {
-        $total=$arrayDigimonesLocal[$nombreD]['ataque'];
-        $total+=$arrayDigimonesLocal[$nombreD]['defensa'];
-        $tipoArray[]=[$arrayDigimonesLocal[$nombreD]['tipo']];
-        $tipoArray[]+=$total;
+        $total = $arrayDigimonesLocal[$nombreD]['ataque'];
+        $total += $arrayDigimonesLocal[$nombreD]['defensa'];
+        $arrayPuntosLocal[]=$total;
+        $tipoArray[] = $arrayDigimonesLocal[$nombreD]['tipo'];
     }
+
 
     foreach ($arrayDigimonesVisitante as $nombreD => $atributo) {
-        $totalV=$arrayDigimonesVisitante[$nombreD]['ataque'];
-        $totalV+=$arrayDigimonesVisitante[$nombreD]['defensa'];
-        $tipoArrayV[]=[$arrayDigimonesVisitante[$nombreD]['tipo']];
-        $tipoArrayV[]+=$totalV;
+        $totalV = $arrayDigimonesVisitante[$nombreD]['ataque'];
+        $totalV += $arrayDigimonesVisitante[$nombreD]['defensa'];
+        $arrayPuntosVisitante[]=$totalV;
+        $tipoArrayV[] = $arrayDigimonesVisitante[$nombreD]['tipo'];
     }
+    
 
-    for($i=0;$i<count($tipoArray);$i++){}
-   
+    for ($i = 0; $i < count($tipoArray); $i++) {
+        $arrayPuntosLocal[$i] += numerorandom($tipoArray[$i], $tipoArrayV[$i]);
+        $arrayPuntosVisitante[$i]+= numerorandom($tipoArrayV[$i], $tipoArray[$i]);
+        if($arrayPuntosLocal[$i]>$arrayPuntosVisitante){
+            $ganador[]='L';
+        }elseif($arrayPuntosLocal[$i]<$arrayPuntosVisitante[$i]){
+            $ganador[]='V';
+        }else $ganador[]='E';
+        }
+    }
+    var_dump($totalV);
 }
