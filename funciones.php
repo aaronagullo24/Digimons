@@ -60,7 +60,7 @@ function botonUsuario($nombre)
             <input type="submit" value="cerrar sesion" name="cerrar sesion" id="cerrar sesion">
         </form>
 
-
+        <br>
     </body>
 <?php
 }

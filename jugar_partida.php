@@ -1,13 +1,18 @@
 <?php
 include "funciones.php";
+$nombre = "";
 if (isset($_POST['Jugar'])) {
     $nombre = $_POST['nombre'];
+    botonUsuario($nombre);
+
     $total = 0;
     $usu_rand = [];
     $tipoArray = [];
     $arrayDigimonesVisitante = [];
-    $total=[];
-    $totalV=[];
+    $arrayPuntosLocal = [];
+    $total = [];
+    $totalV = [];
+
 
     $directorio = fopen("usuarios.txt", "a+");
 
@@ -48,7 +53,7 @@ if (isset($_POST['Jugar'])) {
     foreach ($arrayDigimonesLocal as $nombreD => $atributo) {
         $total = $arrayDigimonesLocal[$nombreD]['ataque'];
         $total += $arrayDigimonesLocal[$nombreD]['defensa'];
-        $arrayPuntosLocal[]=$total;
+        $arrayPuntosLocal[] = $total;
         $tipoArray[] = $arrayDigimonesLocal[$nombreD]['tipo'];
     }
 
@@ -56,20 +61,46 @@ if (isset($_POST['Jugar'])) {
     foreach ($arrayDigimonesVisitante as $nombreD => $atributo) {
         $totalV = $arrayDigimonesVisitante[$nombreD]['ataque'];
         $totalV += $arrayDigimonesVisitante[$nombreD]['defensa'];
-        $arrayPuntosVisitante[]=$totalV;
+        $arrayPuntosVisitante[] = $totalV;
         $tipoArrayV[] = $arrayDigimonesVisitante[$nombreD]['tipo'];
     }
-    
+
 
     for ($i = 0; $i < count($tipoArray); $i++) {
         $arrayPuntosLocal[$i] += numerorandom($tipoArray[$i], $tipoArrayV[$i]);
-        $arrayPuntosVisitante[$i]+= numerorandom($tipoArrayV[$i], $tipoArray[$i]);
-        if($arrayPuntosLocal[$i]>$arrayPuntosVisitante){
-            $ganador[]='L';
-        }elseif($arrayPuntosLocal[$i]<$arrayPuntosVisitante[$i]){
-            $ganador[]='V';
-        }else $ganador[]='E';
-        }
+        $arrayPuntosVisitante[$i] += numerorandom($tipoArrayV[$i], $tipoArray[$i]);
+        if ($arrayPuntosLocal[$i] > $arrayPuntosVisitante[$i]) {
+            $ganador[] = 'L';
+        } elseif ($arrayPuntosLocal[$i] < $arrayPuntosVisitante[$i]) {
+            $ganador[] = 'V';
+        } else $ganador[] = 'E';
     }
-    var_dump($totalV);
+
+    $i = 0;
+    foreach ($arrayDigimonesLocal as $nombreDigimon => $digimon) {
+        echo "<table class='tabla' style='display:inline;position:relative;'>";
+        echo "<tr>";
+        if ($ganador[$i] == 'L') {
+            echo "<td><img src='./digimones/" . $nombreDigimon . "/v.jpg'  heigth='100' width='100'></td>";
+        } elseif ($ganador[$i] == 'V') {
+            echo "<td><img src='./digimones/" . $nombreDigimon . "/d.jpg'  heigth='100' width='100'></td>";
+        } else echo "<td><img src='./digimones/" . $nombreDigimon . "/n.jpg'  heigth='100' width='100'></td>";
+        echo "</tr>";
+        echo "</table>";
+        $i++;
+    }
+    echo "</br>";
+    $i = 0;
+    foreach ($arrayDigimonesVisitante as $nombreDigimon => $digimon) {
+        echo "<table class='tabla' style='display:inline;position:relative;'>";
+        echo "<tr>";
+        if ($ganador[$i] == 'L') {
+            echo "<td><img src='./digimones/" . $nombreDigimon . "/d.jpg'  heigth='100' width='100'></td>";
+        } elseif ($ganador[$i] == 'V') {
+            echo "<td><img src='./digimones/" . $nombreDigimon . "/v.jpg'  heigth='100' width='100'></td>";
+        } else echo "<td><img src='./digimones/" . $nombreDigimon . "/n.jpg'  heigth='100' width='100'></td>";
+        echo "</tr>";
+        echo "</table>";
+        $i++;
+    }
 }

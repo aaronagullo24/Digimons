@@ -8,3 +8,4 @@ Togemon 19 12 Virus 2
 Palmon 19 12 Animal 1 
 Lilimon 19 12 Vacuna 3 
 Tentemon 19 12 Vacuna 2 
+Shakkoumon 34 34 Elemento 3
