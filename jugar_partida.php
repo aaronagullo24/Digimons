@@ -12,7 +12,7 @@ if (isset($_POST['Jugar'])) {
     $arrayPuntosLocal = [];
     $total = [];
     $totalV = [];
-    $arrayregistro=[];  
+    $arrayregistro = [];
 
 
     $directorio = fopen("usuarios.txt", "a+");
@@ -106,6 +106,17 @@ if (isset($_POST['Jugar'])) {
     }
     $g = 0;
     $p = 0;
+
+    $directorio = "Usuarios/" . $nombre . "/";
+    $file_registro = fopen($directorio . "registro.txt", "a+");
+
+    while ($info = fscanf($file_registro, "%s\t%s\t%s")) {
+        $nombreR = $info[0];
+        list(
+            $arrayregistro['jugadas'], $arrayregistro['ganadas'], $arrayregistro['evolucion']
+        ) = $info;
+    }
+
     for ($i = 0; $i < count($ganador); $i++) {
         if ($ganador[$i] == 'L') {
             $g++;
@@ -113,26 +124,56 @@ if (isset($_POST['Jugar'])) {
             $p++;
         }
     }
-    if($g>$p){
-        
-    }
-  
 
-    $directorio = "Usuarios/" . $nombre . "/";
-    $file_registro = fopen($directorio . "registro.txt", "a+");
+    $arrayregistro['jugadas']++;
 
-    while ($info = fscanf($file_registro, "%s\t%s\t%s\n")) {
-        $nombre = $info[0];
-        list(
-            $arrayregistro['jugadas'], $arrayregistro['ganadas'], $arrayregistro['evolucion']
-        ) = $info;
+    if ($g > $p) {
+        $arrayregistro['ganadas']++;
     }
-    foreach($arrayregistro as $campo){
-        if($arrayregistro[$campo]=='jugadas'){
-            fwrite($file_registro, $linea[] . " ");
+
+
+    //aqui estamos
+    if ($arrayregistro['jugadas'] == 10) {
+        echo "entra";
+        echo $nombre;
+        $directorio = "Usuarios/" . $nombre . "/";
+        $file_digimon = fopen($directorio . "Digimons_usuarios.txt", "a+");
+        $digimones = fopen("digimones.txt", "a+");
+        //todos digimones
+        while ($info = fscanf($digimones, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
+            $nombreD = $info[0];
+            list(
+                $arrayDigimones[$nombreD]['nombre'], $arrayDigimones[$nombreD]['ataque'], $arrayDigimones[$nombreD]['defensa'], $arrayDigimones[$nombreD]['tipo'], $arrayDigimones[$nombreD]['nivel'], $arrayDigimones[$nombreD]['evolucion']
+            ) = $info;
         }
 
+        //digimones usuario
+        while ($info = fscanf($file_digimon, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
+            $nombreD = $info[0];
+            list(
+                $arrayDigimonesUsu[$nombreD]['nombre'], $arrayDigimonesUsu[$nombreD]['ataque'], $arrayDigimonesUsu[$nombreD]['defensa'],  $arrayDigimonesUsu[$nombreD]['tipo'], $arrayDigimonesUsu[$nombreD]['nivel'], $arrayDigimonesUsu[$nombreD]['evolucion']
+            ) = $info;
+        }
+
+        //array solo nivel uno
+        foreach ($arrayDigimones as $caracteristica => $valor) {
+
+            if ($valor['nivel'] == 1) {
+                $Digimon1[] = $valor;
+            }
+        }
+        $digi_rand = array_rand($Digimon1, 1);
+
+        $did_cadena = implode("\t", $Digimon1[$digi_rand]);
+        var_dump($did_cadena);
+        fwrite($file_digimon, $did_cadena . "\n");
+
+        fclose($file_digimon);
+
+        var_dump($arrayregistro);
+        $file_registro = fopen($directorio . "registro.txt", "w");
+        foreach ($arrayregistro as $linea) {
+            fwrite($file_registro, $linea . " ");
+        }
     }
-    var_dump($arrayregistro);
-   
 }

@@ -1,11 +1,21 @@
-agumon 12 12 Animal 1 
+agumon 12 12 Animal 1 Biyomon
 angemon 14 12 Virus 1 Togemon
-ankylomon 20 12 Vacuna 2 
-Armadillomon 19 12 Planta 1 
+ankylomon 20 12 Vacuna 2 Lilimon
+Armadillomon 19 12 Planta 1 salamon
 birdramon 19 12 Virus 1 Togemon
-Gabumon 19 12 Elemento 2 
-Togemon 19 12 Virus 2 
-Palmon 19 12 Animal 1 
+Gabumon 19 12 Elemento 2 Shakkoumon
+Togemon 19 12 Virus 2 garurumon
+Palmon 19 12 Animal 1 digmon
 Lilimon 19 12 Vacuna 3 
-Tentemon 19 12 Vacuna 2 
-Shakkoumon 34 34 Elemento 3
+Tentemon 19 12 Vacuna 2 Lilimon
+Shakkoumon 34 34 Elemento 3 
+Biyomon 20 20 Animal 2 
+Garudamon 20 20 Elemento 2 weregarrumon
+Greymon 20 20 Virus 2 garurumon
+Megakabutermon 20 20 Vacuna 2 Lilimon
+submarinomon 20 20 Animal 3 
+weregarrumon 20 20 Elemento 3 
+garurumon 20 20 Virus 3 
+metalgreymon 20 20 Virus 3 
+digmon 20 20 Animal 2 submarinomon
+salamon 20 20 Planta 2 
