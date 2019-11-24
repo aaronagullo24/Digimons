@@ -89,12 +89,14 @@ if (isset($_POST['Evolucionar'])) {
                 $arrayDigimonesTotal[$nombreT]['nombre'], $arrayDigimonesTotal[$nombreT]['ataque'], $arrayDigimonesTotal[$nombreT]['defensa'], $arrayDigimonesTotal[$nombreT]['tipo'], $arrayDigimonesTotal[$nombreT]['nivel'], $arrayDigimonesTotal[$nombreT]['evolucion']
             ) = $info;
         }
-        var_dump($arrayDigimones);
+       
 
         foreach($arrayDigimones as $caracteristica => $valor){
             if ($valor['nombre'] == $nombre_digimon){
-                unset($arrayDigimones[$nombre_digimon]);
+                echo "entra";
+                unset($arrayDigimones[$nombre_digimon]['nombre']);
             }
         }
+        var_dump($arrayDigimones);
     }
     ?>

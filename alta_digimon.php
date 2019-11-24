@@ -47,8 +47,6 @@ if (isset($_POST['nombre'])) {
         mkdir("digimones/" . $nombre, 0777);
 
         fclose($file);
-
-
         echo "El digimon " . $nombre . " fue creado con exito";
     }
 }
@@ -80,7 +78,6 @@ if (isset($_POST['nombre'])) {
             <option value="2">2</option>
             <option value="3">3</option>
         </select>
-        <input name="cadena" type="hidden" value="<?php echo $cadena_datos; ?>">
         <input type="submit" value="dar de alta" name="ver" id="ver todo">
     </form>
 

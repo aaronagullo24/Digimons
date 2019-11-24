@@ -12,7 +12,7 @@
     if (isset($_GET['nombre'])) {
         $nombre = $_GET['nombre'];
         botonUsuario($nombre);
-        echo $nombre;
+        echo "cuenta de: ".$nombre;
     }
     ?>
 

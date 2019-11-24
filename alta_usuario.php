@@ -44,7 +44,7 @@ if (isset($_POST['nombre'])) {
             list(
                 $arrayDigimones[$nombreD]['nombre'], $arrayDigimones[$nombreD]['ataque'], $arrayDigimones[$nombreD]['defensa'], $arrayDigimones[$nombreD]['tipo'], $arrayDigimones[$nombreD]['nivel'], $arrayDigimones[$nombreD]['evolucion']
             ) = $info;
-        } 
+        }
 
         //array solo nivel uno
         foreach ($arrayDigimones as $caracteristica => $valor) {
@@ -52,6 +52,7 @@ if (isset($_POST['nombre'])) {
                 $Digimon1[] = $valor;
             }
         }
+        
         $digi_rand = array_rand($Digimon1, 3);
 
         for ($i = 0; $i < count($digi_rand); $i++) {

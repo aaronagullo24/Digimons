@@ -39,6 +39,7 @@
     </form>
 
     <?php
+
     if (isset($_POST['Evolucion'])) {
         $nombre1 = "";
         $nombre1 = $_POST['evolucion1'];

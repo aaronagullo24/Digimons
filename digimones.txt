@@ -19,3 +19,4 @@ garurumon 20 20 Virus 3
 metalgreymon 20 20 Virus 3 
 digmon 20 20 Animal 2 submarinomon
 salamon 20 20 Planta 2 
+ikkakumon 12 12 Animal 2
