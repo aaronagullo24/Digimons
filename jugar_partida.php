@@ -12,6 +12,7 @@ if (isset($_POST['Jugar'])) {
     $arrayPuntosLocal = [];
     $total = [];
     $totalV = [];
+    $arrayregistro=[];  
 
 
     $directorio = fopen("usuarios.txt", "a+");
@@ -81,10 +82,10 @@ if (isset($_POST['Jugar'])) {
         echo "<table class='tabla' style='display:inline;position:relative;'>";
         echo "<tr>";
         if ($ganador[$i] == 'L') {
-            echo "<td><img src='./digimones/" . $nombreDigimon . "/v.jpg'  heigth='100' width='100'></td>";
+            echo "<td><img src='./digimones/" . $nombreDigimon . "/v.jpg'  heigth='150px' width='150px'></td>";
         } elseif ($ganador[$i] == 'V') {
-            echo "<td><img src='./digimones/" . $nombreDigimon . "/d.jpg'  heigth='100' width='100'></td>";
-        } else echo "<td><img src='./digimones/" . $nombreDigimon . "/n.jpg'  heigth='100' width='100'></td>";
+            echo "<td><img src='./digimones/" . $nombreDigimon . "/d.jpg'  heigth='150' width='150'></td>";
+        } else echo "<td><img src='./digimones/" . $nombreDigimon . "/n.jpg'  heigth='150' width='150'></td>";
         echo "</tr>";
         echo "</table>";
         $i++;
@@ -95,12 +96,43 @@ if (isset($_POST['Jugar'])) {
         echo "<table class='tabla' style='display:inline;position:relative;'>";
         echo "<tr>";
         if ($ganador[$i] == 'L') {
-            echo "<td><img src='./digimones/" . $nombreDigimon . "/d.jpg'  heigth='100' width='100'></td>";
+            echo "<td><img src='./digimones/" . $nombreDigimon . "/d.jpg'  heigth='150' width='150'></td>";
         } elseif ($ganador[$i] == 'V') {
-            echo "<td><img src='./digimones/" . $nombreDigimon . "/v.jpg'  heigth='100' width='100'></td>";
-        } else echo "<td><img src='./digimones/" . $nombreDigimon . "/n.jpg'  heigth='100' width='100'></td>";
+            echo "<td><img src='./digimones/" . $nombreDigimon . "/v.jpg'  heigth='150' width='150'></td>";
+        } else echo "<td><img src='./digimones/" . $nombreDigimon . "/n.jpg'  heigth='150' width='150'></td>";
         echo "</tr>";
         echo "</table>";
         $i++;
     }
+    $g = 0;
+    $p = 0;
+    for ($i = 0; $i < count($ganador); $i++) {
+        if ($ganador[$i] == 'L') {
+            $g++;
+        } elseif ($ganador[$i] == 'V') {
+            $p++;
+        }
+    }
+    if($g>$p){
+        
+    }
+  
+
+    $directorio = "Usuarios/" . $nombre . "/";
+    $file_registro = fopen($directorio . "registro.txt", "a+");
+
+    while ($info = fscanf($file_registro, "%s\t%s\t%s\n")) {
+        $nombre = $info[0];
+        list(
+            $arrayregistro['jugadas'], $arrayregistro['ganadas'], $arrayregistro['evolucion']
+        ) = $info;
+    }
+    foreach($arrayregistro as $campo){
+        if($arrayregistro[$campo]=='jugadas'){
+            fwrite($file_registro, $linea[] . " ");
+        }
+
+    }
+    var_dump($arrayregistro);
+   
 }

@@ -202,38 +202,4 @@ function numerorandom($tipoL, $tipoV)
     $total +=rand(1, 20);
     return $total;
 }
-function equipoGanadorLocal($user, $arrayGanador){
-    $digequipo = digiArray("./USUARIOS/$user/EQUIPO_USUARIO.TXT");
-    $i=0;
-    foreach ($digequipo as $nombre => $digimon1) {
-        echo "<table class='tabla' style='display:inline; border-style: solid;background-color:black;position:relative; margin-left:15%;font-size: 15px;'>";
-        echo "<tr>";
-        if($arrayGanador[$i]=='V'){
-        echo "<td><img src='./DIGIMONES/" . $nombre . "/victoria.png' style:'width: 110px; height: 110px;'></td>";
-        }elseif($arrayGanador[$i]=='D'){
-        echo "<td><img src='./DIGIMONES/" . $nombre . "/derrota.png' style:'width: 110px; height: 110px;'></td>";
-        }else echo "<td><img src='./DIGIMONES/" . $nombre . "/default.png' style:'width: 110px; height: 110px;'></td>";
-        echo "</tr>";
-        echo "<tr>";
-        echo "<td>Nombre: $nombre</td>";
-        echo "</tr>";
-        echo "<tr>";
-        echo "<td>Ataque: " . $digequipo[$nombre]['ataque'] . "</td>";
-        echo "</tr>";
-        echo "<tr>";
-        echo "<td>Defensa: " . $digequipo[$nombre]['defensa'] . "</td>";
-        echo "</tr>";
-        echo "<tr>";
-        echo "<td>Tipo: " . $digequipo[$nombre]['tipo'] . "</td>";
-        echo "</tr>";
-        echo "<tr>";
-        echo "<td>Nivel: " . $digequipo[$nombre]['nivel'] . "</td>";
-        echo "</tr>";
-        echo "<tr>";
-        echo "<td>Siguiente Evolución: " . $digequipo[$nombre]['evolucion'] . "</td>";
-        echo "</tr>";
-        echo "</table>";
-        $i++;
-    
-    }
-}
+
