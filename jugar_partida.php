@@ -131,11 +131,7 @@ if (isset($_POST['Jugar'])) {
         $arrayregistro['ganadas']++;
     }
 
-
-    //aqui estamos
-    if ($arrayregistro['jugadas'] == 10) {
-        echo "entra";
-        echo $nombre;
+    if ($arrayregistro['jugadas'] % 10 == 0) {
         $directorio = "Usuarios/" . $nombre . "/";
         $file_digimon = fopen($directorio . "Digimons_usuarios.txt", "a+");
         $digimones = fopen("digimones.txt", "a+");
@@ -157,20 +153,50 @@ if (isset($_POST['Jugar'])) {
 
         //array solo nivel uno
         foreach ($arrayDigimones as $caracteristica => $valor) {
-
             if ($valor['nivel'] == 1) {
-                $Digimon1[] = $valor;
+                $Digimon1[$caracteristica] = $valor;
             }
         }
-        $digi_rand = array_rand($Digimon1, 1);
 
-        $did_cadena = implode("\t", $Digimon1[$digi_rand]);
-        var_dump($did_cadena);
-        fwrite($file_digimon, $did_cadena . "\n");
+
+        $NuevoDigi = [];
+        $arrayDistintos = array_diff_key($Digimon1, $arrayDigimonesUsu);
+        $digi_rand = array_rand($arrayDistintos, 1);
+
+        foreach ($arrayDigimones as $digimon => $campo) {
+            if ($campo['nombre'] == $digi_rand) {
+                $NuevoDigi[$campo['nombre']] = $campo;
+            }
+        }
+        var_dump($NuevoDigi);
+        //Array digimon aleatorio
+
+        foreach ($NuevoDigi as $linea) {
+            fwrite($file_digimon, $linea['nombre'] . " ");
+            fwrite($file_digimon, $linea['ataque'] . " ");
+            fwrite($file_digimon, $linea['defensa'] . " ");
+            fwrite($file_digimon, $linea['tipo'] . " ");
+            fwrite($file_digimon, $linea['nivel'] . " ");
+            fwrite($file_digimon, $linea['evolucion'] . "\n");
+        }
+
+
 
         fclose($file_digimon);
 
-        var_dump($arrayregistro);
+        $file_registro = fopen($directorio . "registro.txt", "w");
+        foreach ($arrayregistro as $linea) {
+            fwrite($file_registro, $linea . " ");
+        }
+    }
+
+    if ($arrayregistro['ganadas'] % 10 == 0) {
+        $arrayregistro['evolucion']++;
+        $file_registro = fopen($directorio . "registro.txt", "w");
+        foreach ($arrayregistro as $linea) {
+            fwrite($file_registro, $linea . " ");
+        }
+    } else {
         $file_registro = fopen($directorio . "registro.txt", "w");
         foreach ($arrayregistro as $linea) {
             fwrite($file_registro, $linea . " ");

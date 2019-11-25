@@ -15,7 +15,7 @@ if (isset($_POST['Evolucionar'])) {
         ) = $info;
     }
 
-    if ($arrayregistro['evolucion'] == 1) {
+    if ($arrayregistro['evolucion'] > 1) {
         $file = fopen("./Usuarios/$nombre/Digimons_usuarios.txt", "a+");
         while ($info = fscanf($file, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
             list($nombreD, $Ataque, $defensa, $tipo, $nivel, $evolucion) = $info;
@@ -44,59 +44,140 @@ if (isset($_POST['Evolucionar'])) {
                             echo ("<td>Evolucion</td>");
                             echo "<td>" . $evolucion . "</td>";
                             echo "<tr>";
-                            echo "<td>Elejir para tu equipo</td>";
-                            echo "<td>"
-                            ?>
+                            echo "<td></td>";
+                            echo "<td>";
+                            if ($evolucion != null) {
+                                ?>
 
 
-                <input type="hidden" name="nombreD" id="nombreD" value="<?php echo $nombreD; ?>">
-                <input type="hidden" name="nombre" id="nombre" value="<?php echo $nombre; ?>">
-                <input type='submit' value='Evolucionar' name='Evolucion2'>
-
-            <?php
-                        echo ("</table>");
-                    }
-                    ?>
-
+                    <input type="hidden" name="nombreD" id="nombreD" value="<?php echo $nombreD; ?>">
+                    <input type="hidden" name="nombre" id="nombre" value="<?php echo $nombre; ?>">
+                    <input type='submit' value='Evolucionar' name='Evolucion2'>
             </form>
-    <?php
-        } else echo "No tienes evoluciones disponibles";
+<?php
+
+
+            }
+
+            echo ("</table>");
+        }
+    } else echo "No tienes evoluciones disponibles";
+}
+
+$nombreD = "";
+if (isset($_POST['Evolucion2'])) {
+    $nombre = $_POST['nombre'];
+    $nombre_digimon = $_POST['nombreD'];
+    botonUsuario($nombre);
+    $directorio = "Usuarios/" . $nombre . "/";
+    $file_digimon = fopen($directorio . "Digimons_usuarios.txt", "a+");
+
+    //transformacion a array
+    while ($info = fscanf($file_digimon, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
+        $nombreD = $info[0];
+        list(
+            $arrayDigimones[$nombreD]['nombre'], $arrayDigimones[$nombreD]['ataque'], $arrayDigimones[$nombreD]['defensa'], $arrayDigimones[$nombreD]['tipo'], $arrayDigimones[$nombreD]['nivel'], $arrayDigimones[$nombreD]['evolucion']
+        ) = $info;
     }
 
-    $nombreD = "";
-    if (isset($_POST['Evolucion2'])) {
-        $nombre = $_POST['nombre'];
-        $nombre_digimon = $_POST['nombreD'];
-        botonUsuario($nombre);
-        $directorio = "Usuarios/" . $nombre . "/";
-        $file_digimon = fopen($directorio . "Digimons_usuarios.txt", "a+");
 
-        //transformacion a array
-        while ($info = fscanf($file_digimon, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
-            $nombreD = $info[0];
-            list(
-                $arrayDigimones[$nombreD]['nombre'], $arrayDigimones[$nombreD]['ataque'], $arrayDigimones[$nombreD]['defensa'], $arrayDigimones[$nombreD]['tipo'], $arrayDigimones[$nombreD]['nivel'], $arrayDigimones[$nombreD]['evolucion']
-            ) = $info;
+    $file_Todos = fopen("digimones.txt", "a+");
+
+    //transformacion a array
+    while ($info = fscanf($file_Todos, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
+        $nombreT = $info[0];
+        list(
+            $arrayDigimonesTotal[$nombreT]['nombre'], $arrayDigimonesTotal[$nombreT]['ataque'], $arrayDigimonesTotal[$nombreT]['defensa'], $arrayDigimonesTotal[$nombreT]['tipo'], $arrayDigimonesTotal[$nombreT]['nivel'], $arrayDigimonesTotal[$nombreT]['evolucion']
+        ) = $info;
+    }
+    //nombre de la evolucion
+    foreach ($arrayDigimones as $caracteristica => $valor) {
+        if ($valor['nombre'] == $nombre_digimon) {
+            $Nombre_evo = $valor['evolucion'];
         }
+    }
+    $evolucionN = [];
 
-        
-        $file_Todos = fopen( "digimones.txt", "a+");
+    foreach ($arrayDigimonesTotal as $caracteristica => $campo) {
+        if ($campo['nombre'] == $Nombre_evo) {
 
-        //transformacion a array
-        while ($info = fscanf($file_Todos, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
-            $nombreT = $info[0];
-            list(
-                $arrayDigimonesTotal[$nombreT]['nombre'], $arrayDigimonesTotal[$nombreT]['ataque'], $arrayDigimonesTotal[$nombreT]['defensa'], $arrayDigimonesTotal[$nombreT]['tipo'], $arrayDigimonesTotal[$nombreT]['nivel'], $arrayDigimonesTotal[$nombreT]['evolucion']
-            ) = $info;
+            $evolucionN[$campo['nombre']] = $campo;
         }
-       
+    }
 
-        foreach($arrayDigimones as $caracteristica => $valor){
-            if ($valor['nombre'] == $nombre_digimon){
-                echo "entra";
-                unset($arrayDigimones[$nombre_digimon]['nombre']);
+    foreach ($arrayDigimones as $caracteristica => $valor) {
+        if ($valor['nombre'] == $nombre_digimon) {
+            unset($arrayDigimones[$nombre_digimon]);
+        }
+    }
+    fclose($file_digimon);
+    $directorio = "Usuarios/" . $nombre . "/";
+    $file_digimon = fopen($directorio . "Digimons_usuarios.txt", "w");
+
+
+    foreach ($arrayDigimones as $linea) {
+        fwrite($file_digimon, $linea['nombre'] . " ");
+        fwrite($file_digimon, $linea['ataque'] . " ");
+        fwrite($file_digimon, $linea['defensa'] . " ");
+        fwrite($file_digimon, $linea['tipo'] . " ");
+        fwrite($file_digimon, $linea['nivel'] . " ");
+        fwrite($file_digimon, $linea['evolucion'] . "\n");
+    }
+    foreach ($evolucionN as $linea) {
+        fwrite($file_digimon, $linea['nombre'] . " ");
+        fwrite($file_digimon, $linea['ataque'] . " ");
+        fwrite($file_digimon, $linea['defensa'] . " ");
+        fwrite($file_digimon, $linea['tipo'] . " ");
+        fwrite($file_digimon, $linea['nivel'] . " ");
+        fwrite($file_digimon, $linea['evolucion'] . "\n");
+    }
+
+
+    //equipo
+
+    $directorio = "Usuarios/" . $nombre . "/";
+    $file_digimon_E = fopen($directorio . "Equipo_usuarios.txt", "a+");
+
+    //transformacion a array
+    while ($info = fscanf($file_digimon_E, "%s\t%s\t%s\t%s\t%s\t%s\n")) {
+        $nombreD = $info[0];
+        list(
+            $arrayDigimonesE[$nombreD]['nombre'], $arrayDigimonesE[$nombreD]['ataque'], $arrayDigimonesE[$nombreD]['defensa'], $arrayDigimonesE[$nombreD]['tipo'], $arrayDigimonesE[$nombreD]['nivel'], $arrayDigimonesE[$nombreD]['evolucion']
+        ) = $info;
+    }
+    echo $nombre_digimon;
+    echo "<br>";
+    var_dump($arrayDigimonesE);
+    if (in_array($nombre_digimon, $arrayDigimonesE)) {
+        echo "Evolucion aqui";
+        foreach ($arrayDigimonesE as $caracteristica => $valor) {
+            echo "entra";
+            if ($valor['nombre'] == $nombre_digimon) {
+                echo "entraeeeeeeeeeeeeee";
+                unset($arrayDigimones[$nombre_digimon]);
             }
         }
-        var_dump($arrayDigimones);
+        fclose($file_digimon);
+        $directorio = "Usuarios/" . $nombre . "/";
+        $file_digimon = fopen($directorio . "Equipo_usuarios.txt", "w");
+
+        var_dump($arrayDigimonesE);
+        foreach ($arrayDigimonesE as $linea) {
+            fwrite($file_digimon_E, $linea['nombre'] . " ");
+            fwrite($file_digimon_E, $linea['ataque'] . " ");
+            fwrite($file_digimon_E, $linea['defensa'] . " ");
+            fwrite($file_digimon_E, $linea['tipo'] . " ");
+            fwrite($file_digimon_E, $linea['nivel'] . " ");
+            fwrite($file_digimon_E, $linea['evolucion'] . "\n");
+        }
+        foreach ($evolucionN as $linea) {
+            fwrite($file_digimon_E, $linea['nombre'] . " ");
+            fwrite($file_digimon_E, $linea['ataque'] . " ");
+            fwrite($file_digimon_E, $linea['defensa'] . " ");
+            fwrite($file_digimon_E, $linea['tipo'] . " ");
+            fwrite($file_digimon_E, $linea['nivel'] . " ");
+            fwrite($file_digimon_E, $linea['evolucion'] . "\n");
+        }
     }
-    ?>
+}
+?>

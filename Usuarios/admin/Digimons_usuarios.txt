@@ -1,4 +1,3 @@
-angemon	14	12	Virus	1	Togemon
-birdramon	19	12	Virus	1	Togemon
-Palmon	19	12	Animal	1	digmon
-birdramon	19	12	Virus	1	Togemon
+salamon 20 20 Planta 2 
+digmon 20 20 Animal 2 submarinomon
+Biyomon 20 20 Animal 2 
