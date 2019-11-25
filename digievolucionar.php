@@ -145,23 +145,21 @@ if (isset($_POST['Evolucion2'])) {
             $arrayDigimonesE[$nombreD]['nombre'], $arrayDigimonesE[$nombreD]['ataque'], $arrayDigimonesE[$nombreD]['defensa'], $arrayDigimonesE[$nombreD]['tipo'], $arrayDigimonesE[$nombreD]['nivel'], $arrayDigimonesE[$nombreD]['evolucion']
         ) = $info;
     }
-    echo $nombre_digimon;
-    echo "<br>";
-    var_dump($arrayDigimonesE);
-    if (in_array($nombre_digimon, $arrayDigimonesE)) {
-        echo "Evolucion aqui";
+    
+    if (array_key_exists($nombre_digimon, $arrayDigimonesE)) {
+
         foreach ($arrayDigimonesE as $caracteristica => $valor) {
-            echo "entra";
+
             if ($valor['nombre'] == $nombre_digimon) {
-                echo "entraeeeeeeeeeeeeee";
-                unset($arrayDigimones[$nombre_digimon]);
+
+                unset($arrayDigimonesE[$nombre_digimon]);
             }
         }
         fclose($file_digimon);
         $directorio = "Usuarios/" . $nombre . "/";
         $file_digimon = fopen($directorio . "Equipo_usuarios.txt", "w");
 
-        var_dump($arrayDigimonesE);
+       
         foreach ($arrayDigimonesE as $linea) {
             fwrite($file_digimon_E, $linea['nombre'] . " ");
             fwrite($file_digimon_E, $linea['ataque'] . " ");
@@ -170,6 +168,8 @@ if (isset($_POST['Evolucion2'])) {
             fwrite($file_digimon_E, $linea['nivel'] . " ");
             fwrite($file_digimon_E, $linea['evolucion'] . "\n");
         }
+        echo "<td COLSPAN='2' align='center' valign='middle'><img src=./digimones/" . $nombre_digimon . "/n.jpg heigth='100' width='100' ></td>";
+        echo "<br>";
         foreach ($evolucionN as $linea) {
             fwrite($file_digimon_E, $linea['nombre'] . " ");
             fwrite($file_digimon_E, $linea['ataque'] . " ");
@@ -177,7 +177,11 @@ if (isset($_POST['Evolucion2'])) {
             fwrite($file_digimon_E, $linea['tipo'] . " ");
             fwrite($file_digimon_E, $linea['nivel'] . " ");
             fwrite($file_digimon_E, $linea['evolucion'] . "\n");
+            echo "<td COLSPAN='2' align='center' valign='middle'><img src=./digimones/" . $linea['nombre'] . "/n.jpg heigth='100' width='100' ></td>";
+
         }
     }
+   
+
 }
 ?>

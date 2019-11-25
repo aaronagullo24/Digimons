@@ -1,3 +1,4 @@
-salamon 20 20 Planta 2 
-digmon 20 20 Animal 2 submarinomon
 Biyomon 20 20 Animal 2 
+Togemon 19 12 Virus 2 garurumon
+salamon 20 20 Planta 2 
+submarinomon 20 20 Animal 3 

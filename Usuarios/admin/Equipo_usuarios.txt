@@ -1,4 +1,3 @@
-agumon 12 12 Animal 1 Biyomon
-Armadillomon 19 12 Planta 1 salamon
-Palmon 19 12 Animal 1 digmon
-
+Biyomon 20 20 Animal 2 
+salamon 20 20 Planta 2 
+submarinomon 20 20 Animal 3 
