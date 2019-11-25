@@ -123,6 +123,8 @@ if (isset($_POST['Evolucion2'])) {
         fwrite($file_digimon, $linea['nivel'] . " ");
         fwrite($file_digimon, $linea['evolucion'] . "\n");
     }
+    echo "<td COLSPAN='2' align='center' valign='middle'><img src=./digimones/" . $nombre_digimon . "/n.jpg heigth='100' width='100' ></td>";
+        echo "<br>";
     foreach ($evolucionN as $linea) {
         fwrite($file_digimon, $linea['nombre'] . " ");
         fwrite($file_digimon, $linea['ataque'] . " ");
@@ -130,6 +132,7 @@ if (isset($_POST['Evolucion2'])) {
         fwrite($file_digimon, $linea['tipo'] . " ");
         fwrite($file_digimon, $linea['nivel'] . " ");
         fwrite($file_digimon, $linea['evolucion'] . "\n");
+        echo "<td COLSPAN='2' align='center' valign='middle'><img src=./digimones/" . $linea['nombre'] . "/n.jpg heigth='100' width='100' ></td>";
     }
 
 
@@ -168,8 +171,7 @@ if (isset($_POST['Evolucion2'])) {
             fwrite($file_digimon_E, $linea['nivel'] . " ");
             fwrite($file_digimon_E, $linea['evolucion'] . "\n");
         }
-        echo "<td COLSPAN='2' align='center' valign='middle'><img src=./digimones/" . $nombre_digimon . "/n.jpg heigth='100' width='100' ></td>";
-        echo "<br>";
+        
         foreach ($evolucionN as $linea) {
             fwrite($file_digimon_E, $linea['nombre'] . " ");
             fwrite($file_digimon_E, $linea['ataque'] . " ");

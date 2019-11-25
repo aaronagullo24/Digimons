@@ -34,6 +34,7 @@ function botonUsuario($nombre)
 {
     ?>
     <h1 style="color:black;float:center">Entorno de Usuario</h1>
+    
 
     <body background="fondo.png" Style="text-align: center;">
         <form method="POST" action="ver_mis_digimones.php" style="display:inline; color:mediumspringgreen">
@@ -60,6 +61,10 @@ function botonUsuario($nombre)
             <input type="submit" value="cerrar sesion" name="cerrar sesion" id="cerrar sesion">
         </form>
 
+        <br>
+        <?php
+        echo "cuenta de: " . $nombre;
+        ?>
         <br>
     </body>
 <?php
@@ -145,7 +150,7 @@ function numerorandom($tipoL, $tipoV)
             $total = -10;
         }
     }
- 
+
     if ($tipoL == "Virus") {
         if ($tipoV == "Animal") {
             $total = +10;
@@ -170,7 +175,7 @@ function numerorandom($tipoL, $tipoV)
             $total = -10;
         }
     }
-    
+
 
     if ($tipoL == "Planta") {
         if ($tipoV == "Elemental") {
@@ -184,7 +189,7 @@ function numerorandom($tipoL, $tipoV)
         }
     }
 
-    
+
 
     if ($tipoL == "Elemental") {
         if ($tipoV == "Vacuna") {
@@ -197,9 +202,8 @@ function numerorandom($tipoL, $tipoV)
             $total = -10;
         }
     }
-  
 
-    $total +=rand(1, 20);
+
+    $total += rand(1, 20);
     return $total;
 }
-

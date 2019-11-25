@@ -5,7 +5,6 @@ $nombre = "";
 $nombre = $_POST['nombre'];
 if (isset($_POST['submit'])) { // comprobamos que se ha enviado el formulario
 
-    $nombre = "";
     $nombre = $_POST['nombre'];
 
     if ($_FILES['normal']['name'] != "") { // El campo foto contiene una imagen...

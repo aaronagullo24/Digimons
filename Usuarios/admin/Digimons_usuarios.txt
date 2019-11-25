@@ -2,3 +2,4 @@ Biyomon 20 20 Animal 2
 Togemon 19 12 Virus 2 garurumon
 salamon 20 20 Planta 2 
 submarinomon 20 20 Animal 3 
+agumon 12 12 Animal 1 Biyomon

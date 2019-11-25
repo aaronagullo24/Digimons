@@ -22,12 +22,14 @@ if (isset($_POST['nombre'])) {
 }
 ?>
 
-<form method='POST' action="<?= $_SERVER['PHP_SELF'] ?>">
+<body background="fondo.png">
+    <form method='POST' Style="  text-align: center; action=" <?= $_SERVER['PHP_SELF'] ?>>
 
-    Nombre: <input type='text' name='nombre' id='nombre' value="<?= $nombre ?>"><br>
+        Nombre: <input type='text' name='nombre' id='nombre' value="<?= $nombre ?>"><br>
 
-    Contraseña: <input type='password' name='contraseña' id='contraseña' value="<?= $contraseña ?>"><br>
+        Contraseña: <input type='password' name='contraseña' id='contraseña' value="<?= $contraseña ?>"><br>
 
-    <input type='submit' value="enviar" name="Enviar" id="Enviar">
+        <input type='submit' value="enviar" name="Enviar" id="Enviar">
 
-</form>
+    </form>
+</body>
